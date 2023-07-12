@@ -15,6 +15,9 @@
 		40579A8D2A5F4A7000709AE5 /* ComingSoonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A8C2A5F4A7000709AE5 /* ComingSoonView.swift */; };
 		40579A8F2A5F4A7A00709AE5 /* TopSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A8E2A5F4A7A00709AE5 /* TopSearchView.swift */; };
 		40579A912A5F4A8700709AE5 /* DownloadsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A902A5F4A8700709AE5 /* DownloadsView.swift */; };
+		40579A942A5F4BE600709AE5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A932A5F4BE600709AE5 /* DetailView.swift */; };
+		40579A962A5F4C9E00709AE5 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A952A5F4C9E00709AE5 /* HeaderView.swift */; };
+		40579A982A5F4E1600709AE5 /* PosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A972A5F4E1600709AE5 /* PosterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		40579A8C2A5F4A7000709AE5 /* ComingSoonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonView.swift; sourceTree = "<group>"; };
 		40579A8E2A5F4A7A00709AE5 /* TopSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSearchView.swift; sourceTree = "<group>"; };
 		40579A902A5F4A8700709AE5 /* DownloadsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsView.swift; sourceTree = "<group>"; };
+		40579A932A5F4BE600709AE5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
+		40579A952A5F4C9E00709AE5 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		40579A972A5F4E1600709AE5 /* PosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +101,7 @@
 		40579A802A5F471A00709AE5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				40579A922A5F4BCF00709AE5 /* Components */,
 				40579A822A5F476B00709AE5 /* Home */,
 				40579A892A5F4A1B00709AE5 /* ComingSoon */,
 				40579A8A2A5F4A2900709AE5 /* TopSearch */,
@@ -141,6 +148,16 @@
 				40579A902A5F4A8700709AE5 /* DownloadsView.swift */,
 			);
 			path = Downloads;
+			sourceTree = "<group>";
+		};
+		40579A922A5F4BCF00709AE5 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				40579A932A5F4BE600709AE5 /* DetailView.swift */,
+				40579A952A5F4C9E00709AE5 /* HeaderView.swift */,
+				40579A972A5F4E1600709AE5 /* PosterView.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -216,9 +233,12 @@
 				40579A712A5F46EF00709AE5 /* NetflixCloneAppSwiftUIApp.swift in Sources */,
 				40579A842A5F477E00709AE5 /* HomeView.swift in Sources */,
 				40579A8D2A5F4A7000709AE5 /* ComingSoonView.swift in Sources */,
+				40579A942A5F4BE600709AE5 /* DetailView.swift in Sources */,
 				40579A8F2A5F4A7A00709AE5 /* TopSearchView.swift in Sources */,
 				40579A912A5F4A8700709AE5 /* DownloadsView.swift in Sources */,
 				40579A882A5F47D300709AE5 /* MainTabView.swift in Sources */,
+				40579A962A5F4C9E00709AE5 /* HeaderView.swift in Sources */,
+				40579A982A5F4E1600709AE5 /* PosterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
