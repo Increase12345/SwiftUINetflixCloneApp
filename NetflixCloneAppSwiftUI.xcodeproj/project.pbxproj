@@ -18,6 +18,11 @@
 		40579A942A5F4BE600709AE5 /* DetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A932A5F4BE600709AE5 /* DetailView.swift */; };
 		40579A962A5F4C9E00709AE5 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A952A5F4C9E00709AE5 /* HeaderView.swift */; };
 		40579A982A5F4E1600709AE5 /* PosterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A972A5F4E1600709AE5 /* PosterView.swift */; };
+		40579A9A2A5F564000709AE5 /* SectionsOfMovies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A992A5F564000709AE5 /* SectionsOfMovies.swift */; };
+		40579A9C2A5F5CFF00709AE5 /* APICall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A9B2A5F5CFF00709AE5 /* APICall.swift */; };
+		40579A9E2A5F603E00709AE5 /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A9D2A5F603E00709AE5 /* HomeViewViewModel.swift */; };
+		40579AA02A5F605F00709AE5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A9F2A5F605F00709AE5 /* Movie.swift */; };
+		40579AA52A5F799200709AE5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 40579AA42A5F799200709AE5 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,10 @@
 		40579A932A5F4BE600709AE5 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
 		40579A952A5F4C9E00709AE5 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
 		40579A972A5F4E1600709AE5 /* PosterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterView.swift; sourceTree = "<group>"; };
+		40579A992A5F564000709AE5 /* SectionsOfMovies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionsOfMovies.swift; sourceTree = "<group>"; };
+		40579A9B2A5F5CFF00709AE5 /* APICall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICall.swift; sourceTree = "<group>"; };
+		40579A9D2A5F603E00709AE5 /* HomeViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewViewModel.swift; sourceTree = "<group>"; };
+		40579A9F2A5F605F00709AE5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				40579AA52A5F799200709AE5 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -94,6 +104,7 @@
 		40579A7F2A5F471400709AE5 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				40579A9F2A5F605F00709AE5 /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -114,6 +125,7 @@
 		40579A812A5F472C00709AE5 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				40579A9B2A5F5CFF00709AE5 /* APICall.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -122,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				40579A832A5F477E00709AE5 /* HomeView.swift */,
+				40579A9D2A5F603E00709AE5 /* HomeViewViewModel.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -156,6 +169,7 @@
 				40579A932A5F4BE600709AE5 /* DetailView.swift */,
 				40579A952A5F4C9E00709AE5 /* HeaderView.swift */,
 				40579A972A5F4E1600709AE5 /* PosterView.swift */,
+				40579A992A5F564000709AE5 /* SectionsOfMovies.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -176,6 +190,9 @@
 			dependencies = (
 			);
 			name = NetflixCloneAppSwiftUI;
+			packageProductDependencies = (
+				40579AA42A5F799200709AE5 /* Kingfisher */,
+			);
 			productName = NetflixCloneAppSwiftUI;
 			productReference = 40579A6D2A5F46EF00709AE5 /* NetflixCloneAppSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -204,6 +221,9 @@
 				Base,
 			);
 			mainGroup = 40579A642A5F46EF00709AE5;
+			packageReferences = (
+				40579AA32A5F799200709AE5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 40579A6E2A5F46EF00709AE5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -233,12 +253,16 @@
 				40579A712A5F46EF00709AE5 /* NetflixCloneAppSwiftUIApp.swift in Sources */,
 				40579A842A5F477E00709AE5 /* HomeView.swift in Sources */,
 				40579A8D2A5F4A7000709AE5 /* ComingSoonView.swift in Sources */,
+				40579A9C2A5F5CFF00709AE5 /* APICall.swift in Sources */,
 				40579A942A5F4BE600709AE5 /* DetailView.swift in Sources */,
 				40579A8F2A5F4A7A00709AE5 /* TopSearchView.swift in Sources */,
 				40579A912A5F4A8700709AE5 /* DownloadsView.swift in Sources */,
 				40579A882A5F47D300709AE5 /* MainTabView.swift in Sources */,
+				40579AA02A5F605F00709AE5 /* Movie.swift in Sources */,
 				40579A962A5F4C9E00709AE5 /* HeaderView.swift in Sources */,
 				40579A982A5F4E1600709AE5 /* PosterView.swift in Sources */,
+				40579A9E2A5F603E00709AE5 /* HomeViewViewModel.swift in Sources */,
+				40579A9A2A5F564000709AE5 /* SectionsOfMovies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -439,6 +463,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		40579AA32A5F799200709AE5 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		40579AA42A5F799200709AE5 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 40579AA32A5F799200709AE5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 40579A652A5F46EF00709AE5 /* Project object */;
 }

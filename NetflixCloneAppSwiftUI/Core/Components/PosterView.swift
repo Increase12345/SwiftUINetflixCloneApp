@@ -42,11 +42,8 @@ struct PosterView: View {
                             )
                     }
                 }
-                .padding(.bottom, 40)
-                
-                
+                .padding(.bottom, 20)
             }
-            //.frame(width: .infinity, height: 300)
         }
     }
 }
