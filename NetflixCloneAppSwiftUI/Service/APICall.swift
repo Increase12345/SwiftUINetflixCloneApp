@@ -87,6 +87,20 @@ class APICall {
         return decodedData.results
     }
     
+    // Method to fetch DiscoverMovies
+    func fetchDiscoverMovies() async throws -> [Movie] {
+        let urlPath = "\(Constants.baseMovieURL)/discover/movie?api_key=\(Constants.movieAPI)"
+        guard let url = URL(string: urlPath) else { fatalError() }
+        
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        let decodedData = try decoder.decode(Movies.self, from: data)
+        
+        return decodedData.results
+    }
+    
     //Method to fetch Video from Youtube
     func fetchYoutubeVideo(with query: String) async throws -> String {
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { fatalError() }

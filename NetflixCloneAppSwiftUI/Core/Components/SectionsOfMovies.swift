@@ -22,7 +22,7 @@ struct SectionsOfMovies: View {
             }
             
             ScrollView(.horizontal, showsIndicators: false) {
-                HStack(spacing: 15) {
+                LazyHStack(spacing: 15) {
                     ForEach(section, id: \.id) { movie in
                         NavigationLink {
                             DetailView(movie: movie)

@@ -26,6 +26,7 @@
 		40579AA82A5FA22F00709AE5 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 40579AA72A5FA22E00709AE5 /* YouTubePlayerKit */; };
 		40579AAB2A5FA5E100709AE5 /* DetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AAA2A5FA5E100709AE5 /* DetailViewViewModel.swift */; };
 		40579AAD2A5FA60200709AE5 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AAC2A5FA60200709AE5 /* Youtube.swift */; };
+		40579AAF2A607D7F00709AE5 /* ComingSoonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AAE2A607D7F00709AE5 /* ComingSoonViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		40579A9F2A5F605F00709AE5 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		40579AAA2A5FA5E100709AE5 /* DetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewViewModel.swift; sourceTree = "<group>"; };
 		40579AAC2A5FA60200709AE5 /* Youtube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Youtube.swift; sourceTree = "<group>"; };
+		40579AAE2A607D7F00709AE5 /* ComingSoonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +153,7 @@
 			isa = PBXGroup;
 			children = (
 				40579A8C2A5F4A7000709AE5 /* ComingSoonView.swift */,
+				40579AAE2A607D7F00709AE5 /* ComingSoonViewModel.swift */,
 			);
 			path = ComingSoon;
 			sourceTree = "<group>";
@@ -280,6 +283,7 @@
 				40579A962A5F4C9E00709AE5 /* HeaderView.swift in Sources */,
 				40579A982A5F4E1600709AE5 /* PosterView.swift in Sources */,
 				40579A9E2A5F603E00709AE5 /* HomeViewViewModel.swift in Sources */,
+				40579AAF2A607D7F00709AE5 /* ComingSoonViewModel.swift in Sources */,
 				40579AAD2A5FA60200709AE5 /* Youtube.swift in Sources */,
 				40579AAB2A5FA5E100709AE5 /* DetailViewViewModel.swift in Sources */,
 				40579A9A2A5F564000709AE5 /* SectionsOfMovies.swift in Sources */,
