@@ -15,7 +15,7 @@ class HomeViewViewModel: ObservableObject {
         fetchTrendingMovies()
     }
     
-    func fetchTrendingMovies() {
+    private func fetchTrendingMovies() {
         Task {
             self.trendingMovies = try await APICall.shared.fetchTrendingMovies()
         }

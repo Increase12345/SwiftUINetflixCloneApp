@@ -25,7 +25,7 @@ struct SectionsOfMovies: View {
                 HStack(spacing: 15) {
                     ForEach(vm.trendingMovies, id: \.id) { movie in
                         NavigationLink {
-                            DetailView()
+                            DetailView(movie: movie)
                         } label: {
                             KFImage(URL(string: movie.posterImage))
                                 .resizable()

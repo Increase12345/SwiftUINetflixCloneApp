@@ -25,3 +25,7 @@ struct Movie: Codable, Identifiable {
         "https://image.tmdb.org/t/p/w500" + posterPath
     }
 }
+
+extension Movie {
+    static let MOCK_DATA = Movie(id: 0, title: "Harry Potter", originalTitle: "Harry Potter", overview: "Very nice movie for kids", posterPath: "", releaseDate: "10-08-2028", voteAverage: 7, voteCount: 237)
+}
