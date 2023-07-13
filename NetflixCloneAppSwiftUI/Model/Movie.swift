@@ -17,13 +17,13 @@ struct Movie: Codable, Identifiable {
     let originalName: String?
     let originalTitle: String?
     let overview: String
-    let posterPath: String
+    let posterPath: String?
     let releaseDate: String?
-    let voteAverage: Double
-    let voteCount: Int
+    let voteAverage: Double?
+    let voteCount: Int?
     
     var posterImage: String {
-        "https://image.tmdb.org/t/p/w500" + posterPath
+        "https://image.tmdb.org/t/p/w500" + (posterPath ?? "")
     }
 }
 

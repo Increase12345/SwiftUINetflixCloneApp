@@ -6,15 +6,41 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct TopSearchView: View {
+    @StateObject var vm = TopSearchViewModel()
+    @State private var count = 0
+    
     var body: some View {
-        Text("Top Search")
+        VStack {
+            
+            TextField("Search", text: $vm.searchText)
+                .padding()
+                .onChange(of: vm.searchText) { newValue in
+                    vm.searchMovie(with: newValue)
+                }
+            
+            
+            ScrollView {
+                LazyVStack {
+                    ForEach(vm.searchedMovies, id: \.id) { movie in
+                        NavigationLink {
+                            DetailView(movie: movie)
+                        } label: {
+                            MovieRowView(imageURL: movie.posterImage, title: movie.title ?? "")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
 
 struct TopSearchView_Previews: PreviewProvider {
     static var previews: some View {
-        TopSearchView()
+        NavigationStack {
+            TopSearchView()
+        }
     }
 }

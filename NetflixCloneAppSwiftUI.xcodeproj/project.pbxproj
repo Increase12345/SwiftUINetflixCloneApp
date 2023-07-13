@@ -27,6 +27,8 @@
 		40579AAB2A5FA5E100709AE5 /* DetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AAA2A5FA5E100709AE5 /* DetailViewViewModel.swift */; };
 		40579AAD2A5FA60200709AE5 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AAC2A5FA60200709AE5 /* Youtube.swift */; };
 		40579AAF2A607D7F00709AE5 /* ComingSoonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AAE2A607D7F00709AE5 /* ComingSoonViewModel.swift */; };
+		40579AB12A60855A00709AE5 /* TopSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AB02A60855A00709AE5 /* TopSearchViewModel.swift */; };
+		40579AB52A609A4200709AE5 /* MovieRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AB42A609A4200709AE5 /* MovieRowView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +51,8 @@
 		40579AAA2A5FA5E100709AE5 /* DetailViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewViewModel.swift; sourceTree = "<group>"; };
 		40579AAC2A5FA60200709AE5 /* Youtube.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Youtube.swift; sourceTree = "<group>"; };
 		40579AAE2A607D7F00709AE5 /* ComingSoonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonViewModel.swift; sourceTree = "<group>"; };
+		40579AB02A60855A00709AE5 /* TopSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSearchViewModel.swift; sourceTree = "<group>"; };
+		40579AB42A609A4200709AE5 /* MovieRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRowView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -162,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				40579A8E2A5F4A7A00709AE5 /* TopSearchView.swift */,
+				40579AB02A60855A00709AE5 /* TopSearchViewModel.swift */,
 			);
 			path = TopSearch;
 			sourceTree = "<group>";
@@ -180,6 +185,7 @@
 				40579A992A5F564000709AE5 /* SectionsOfMovies.swift */,
 				40579A952A5F4C9E00709AE5 /* HeaderView.swift */,
 				40579A972A5F4E1600709AE5 /* PosterView.swift */,
+				40579AB42A609A4200709AE5 /* MovieRowView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -276,10 +282,12 @@
 				40579A8D2A5F4A7000709AE5 /* ComingSoonView.swift in Sources */,
 				40579A9C2A5F5CFF00709AE5 /* APICall.swift in Sources */,
 				40579A942A5F4BE600709AE5 /* DetailView.swift in Sources */,
+				40579AB12A60855A00709AE5 /* TopSearchViewModel.swift in Sources */,
 				40579A8F2A5F4A7A00709AE5 /* TopSearchView.swift in Sources */,
 				40579A912A5F4A8700709AE5 /* DownloadsView.swift in Sources */,
 				40579A882A5F47D300709AE5 /* MainTabView.swift in Sources */,
 				40579AA02A5F605F00709AE5 /* Movie.swift in Sources */,
+				40579AB52A609A4200709AE5 /* MovieRowView.swift in Sources */,
 				40579A962A5F4C9E00709AE5 /* HeaderView.swift in Sources */,
 				40579A982A5F4E1600709AE5 /* PosterView.swift in Sources */,
 				40579A9E2A5F603E00709AE5 /* HomeViewViewModel.swift in Sources */,

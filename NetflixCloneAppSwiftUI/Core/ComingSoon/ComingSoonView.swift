@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Kingfisher
 
 struct ComingSoonView: View {
     @StateObject var vm = ComingSoonViewModel()
@@ -23,19 +22,7 @@ struct ComingSoonView: View {
                         NavigationLink {
                             DetailView(movie: movie)
                         } label: {
-                            HStack {
-                                KFImage(URL(string: movie.posterImage))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(height: 150)
-                                Text(movie.originalTitle ?? "")
-                                Spacer()
-                                Image(systemName: "play.circle")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 30)
-                            }
-                            .padding(.horizontal)
+                            MovieRowView(imageURL: movie.posterImage, title: movie.originalTitle ?? "")
                         }
                     }
                 }
