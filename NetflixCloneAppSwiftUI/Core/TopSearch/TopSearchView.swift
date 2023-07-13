@@ -14,14 +14,6 @@ struct TopSearchView: View {
     
     var body: some View {
         VStack {
-            
-            TextField("Search", text: $vm.searchText)
-                .padding()
-                .onChange(of: vm.searchText) { newValue in
-                    vm.searchMovie(with: newValue)
-                }
-            
-            
             ScrollView {
                 LazyVStack {
                     ForEach(vm.searchedMovies, id: \.id) { movie in
@@ -31,6 +23,12 @@ struct TopSearchView: View {
                             MovieRowView(imageURL: movie.posterImage, title: movie.title ?? "")
                         }
                     }
+                }
+            }
+            .searchable(text: $vm.searchText)
+            .onChange(of: vm.searchText) { _ in
+                Task {
+                    try await vm.searchForMovie(with: vm.searchText)
                 }
             }
         }
