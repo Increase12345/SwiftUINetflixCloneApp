@@ -6,15 +6,19 @@
 //
 
 import SwiftUI
+import Kingfisher
 
 struct PosterView: View {
+    let movies: [Movie]
+    
     var body: some View {
         ZStack {
             ZStack(alignment: .bottom) {
-                Image("poster")
+                KFImage(URL(string: movies.first?.posterImage ?? ""))
                     .resizable()
                     .scaledToFill()
                 LinearGradient(colors: [.black, .clear], startPoint: .bottom, endPoint: .top)
+                    .opacity(0.8)
                 
                 
                 HStack(spacing: 30) {
@@ -50,6 +54,6 @@ struct PosterView: View {
 
 struct PosterView_Previews: PreviewProvider {
     static var previews: some View {
-        PosterView()
+        PosterView(movies: [Movie]())
     }
 }

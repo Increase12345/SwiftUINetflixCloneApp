@@ -21,11 +21,13 @@ struct HeaderView: View {
                 .resizable()
                 .scaledToFit()
                 .frame(width: 25)
+                .foregroundColor(.secondary)
             
             Image(systemName: "person")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 20)
+                .foregroundColor(.secondary)
         }
         .padding(.horizontal)
     }

@@ -15,17 +15,17 @@ struct HomeView: View {
             VStack {
                 HeaderView()
                 
-                PosterView()
+                PosterView(movies: vm.upcomingMovies)
                 
-                SectionsOfMovies(sectionTitle: "Trending Movies", vm: vm)
+                SectionsOfMovies(sectionTitle: "Trending Movies", section: vm.trendingMovies)
                 
-//                SectionsOfMovies(sectionTitle: "Trending TV")
-//                
-//                SectionsOfMovies(sectionTitle: "Popular")
-//                
-//                SectionsOfMovies(sectionTitle: "Upcoming Movies")
-//                
-//                SectionsOfMovies(sectionTitle: "Top Rated")
+                SectionsOfMovies(sectionTitle: "Trending TV", section: vm.trendingTV)
+                
+                SectionsOfMovies(sectionTitle: "Popular", section: vm.popularMovies)
+                
+                SectionsOfMovies(sectionTitle: "Upcoming Movies", section: vm.upcomingMovies)
+                
+                SectionsOfMovies(sectionTitle: "Top Rated", section: vm.topRatedMovies)
             }
         }
     }

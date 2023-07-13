@@ -10,7 +10,7 @@ import Kingfisher
 
 struct SectionsOfMovies: View {
     let sectionTitle: String
-    @ObservedObject var vm: HomeViewViewModel
+    var section: [Movie]
     
     var body: some View {
         VStack {
@@ -23,7 +23,7 @@ struct SectionsOfMovies: View {
             
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 15) {
-                    ForEach(vm.trendingMovies, id: \.id) { movie in
+                    ForEach(section, id: \.id) { movie in
                         NavigationLink {
                             DetailView(movie: movie)
                         } label: {
@@ -44,7 +44,7 @@ struct SectionsOfMovies: View {
 struct SectionsOfMovies_Previews: PreviewProvider {
     static var previews: some View {
         NavigationStack {
-            SectionsOfMovies(sectionTitle: "Trending Movies", vm: HomeViewViewModel())
+            SectionsOfMovies(sectionTitle: "Trending Movies", section: [Movie]())
         }
     }
 }

@@ -9,7 +9,9 @@ import SwiftUI
 import YouTubePlayerKit
 
 struct DetailView: View {
+    @StateObject var vm = DetailViewViewModel()
     let movie: Movie
+
     
     var body: some View {
         VStack {
@@ -17,7 +19,7 @@ struct DetailView: View {
                 .frame(maxWidth: .infinity, maxHeight: 250)
             
             VStack(alignment: .leading) {
-                Text(movie.title ?? "")
+                Text(movie.title ?? movie.originalName ?? "No Title")
                     .font(.title2.bold())
                 Text(movie.overview)
             }
