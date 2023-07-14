@@ -15,7 +15,7 @@ struct HomeView: View {
             VStack {
                 HeaderView()
                 
-                PosterView(movies: vm.upcomingMovies)
+                PosterView(movie: vm.upcomingMovies.last ?? Movie.MOCK_DATA)
                 
                 SectionsOfMovies(sectionTitle: "Trending Movies", section: vm.trendingMovies)
                 
