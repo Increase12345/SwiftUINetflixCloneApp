@@ -43,8 +43,6 @@ struct SectionsOfMovies: View {
 
 struct SectionsOfMovies_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationStack {
-            SectionsOfMovies(sectionTitle: "Trending Movies", section: [Movie]())
-        }
+        SectionsOfMovies(sectionTitle: "Trending Movies", section: [Movie]())
     }
 }

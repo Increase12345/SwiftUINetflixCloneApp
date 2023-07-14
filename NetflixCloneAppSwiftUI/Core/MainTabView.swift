@@ -9,23 +9,28 @@ import SwiftUI
 
 struct MainTabView: View {
     var body: some View {
-        NavigationStack {
             TabView {
                 
                 // Main View with poster and sections
-                HomeView()
+                NavigationStack {
+                    HomeView()
+                }
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
                 
                 // List of coming soon Moview
-                ComingSoonView()
+                NavigationStack {
+                    ComingSoonView()
+                }
                     .tabItem {
                         Label("Coming Soon", systemImage: "play.circle")
                     }
                 
                 // Search view to search for a movie or see recent searches
-                TopSearchView()
+                NavigationStack {
+                    TopSearchView()
+                }
                     .tabItem {
                         Label("Top Search", systemImage: "magnifyingglass")
                     }
@@ -36,12 +41,11 @@ struct MainTabView: View {
                         Label("Downloads", systemImage: "arrow.down.to.line")
                     }
             }
-        }
     }
 }
 
 struct MainTabView_Previews: PreviewProvider {
     static var previews: some View {
-            MainTabView()
+        MainTabView()
     }
 }
