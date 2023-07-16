@@ -12,7 +12,7 @@ struct Constants {
     static let baseMovieURL = "https://api.themoviedb.org/3"
     static let movieAPI = "8fc626b9b34342fd29749f14d1e6db2e"
     static let baseYoutubeURL = "https://youtube.googleapis.com/youtube/v3/search?"
-    static let youtubeAPI = "AIzaSyAnp3p1tlgERCCRx-6xmAnUSLHWc5QYgNg"
+    static let youtubeAPI = "AIzaSyA5Gk1qmarLRGfVxbu0JHbEIEUE7oXafvk"
 }
 
 class APICall {
@@ -106,12 +106,12 @@ class APICall {
     func fetchYoutubeVideo(with query: String) async throws -> String {
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { fatalError() }
         guard let url = URL(string: "\(Constants.baseYoutubeURL)q=\(query)&key=\(Constants.youtubeAPI)") else { fatalError() }
- 
+        
         let (data, _) = try await URLSession.shared.data(from: url)
         let decodedData = try JSONDecoder().decode(Youtube.self, from: data)
         
-        let youtubeVideURL = "https://www.youtube.com/watch?v=\(decodedData.items[0].id.videoId)"
+        let youtubeVideoID = "\(decodedData.items[0].id.videoId)"
 
-        return youtubeVideURL
+        return youtubeVideoID
     }
 }

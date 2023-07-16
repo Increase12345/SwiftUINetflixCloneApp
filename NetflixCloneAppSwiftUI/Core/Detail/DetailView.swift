@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import YouTubePlayerKit
 
 struct DetailView: View {
     @StateObject var vm = DetailViewViewModel()
@@ -28,8 +27,8 @@ struct DetailView: View {
             }
             
             // Video Player
-            YouTubePlayerView("https://youtube.com/watch?v=psL_5RIBqnY")
-                .frame(maxWidth: .infinity, maxHeight: 250)
+            YoutubeVideoView(youtubeVideoID: vm.youtubeVideoID)
+                .frame(height: 250)
             
             // Overview about selected movie
             VStack(alignment: .leading) {
@@ -54,6 +53,9 @@ struct DetailView: View {
             Spacer()
         }
         .navigationBarBackButtonHidden()
+        .onAppear {
+            //vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
+        }
     }
 }
 

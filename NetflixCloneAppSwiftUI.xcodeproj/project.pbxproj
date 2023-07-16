@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4022E5442A646A1600A57133 /* YoutubeVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022E5432A646A1600A57133 /* YoutubeVideoView.swift */; };
 		40579A712A5F46EF00709AE5 /* NetflixCloneAppSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A702A5F46EF00709AE5 /* NetflixCloneAppSwiftUIApp.swift */; };
 		40579A752A5F46F100709AE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40579A742A5F46F100709AE5 /* Assets.xcassets */; };
 		40579A782A5F46F100709AE5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40579A772A5F46F100709AE5 /* Preview Assets.xcassets */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4022E5432A646A1600A57133 /* YoutubeVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoView.swift; sourceTree = "<group>"; };
 		40579A6D2A5F46EF00709AE5 /* NetflixCloneAppSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetflixCloneAppSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40579A702A5F46EF00709AE5 /* NetflixCloneAppSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixCloneAppSwiftUIApp.swift; sourceTree = "<group>"; };
 		40579A742A5F46F100709AE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				40579A952A5F4C9E00709AE5 /* HeaderView.swift */,
 				40579A972A5F4E1600709AE5 /* PosterView.swift */,
 				40579AB42A609A4200709AE5 /* MovieRowView.swift */,
+				4022E5432A646A1600A57133 /* YoutubeVideoView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				40579A8F2A5F4A7A00709AE5 /* TopSearchView.swift in Sources */,
 				40579A912A5F4A8700709AE5 /* DownloadsView.swift in Sources */,
 				40579A882A5F47D300709AE5 /* MainTabView.swift in Sources */,
+				4022E5442A646A1600A57133 /* YoutubeVideoView.swift in Sources */,
 				40579AA02A5F605F00709AE5 /* Movie.swift in Sources */,
 				40579AB52A609A4200709AE5 /* MovieRowView.swift in Sources */,
 				40579A962A5F4C9E00709AE5 /* HeaderView.swift in Sources */,

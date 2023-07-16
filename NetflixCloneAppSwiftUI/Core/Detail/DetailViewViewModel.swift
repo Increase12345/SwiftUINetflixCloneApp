@@ -6,21 +6,15 @@
 //
 
 import Foundation
+import YouTubePlayerKit
 
 @MainActor
 class DetailViewViewModel: ObservableObject {
-    @Published var youtubeVideoURL = ""
-    //@Published var video: YouTubePlayer = ""
+    @Published var youtubeVideoID = "GYkq9Rgoj8E"
     
-    
-    init() {
-        
-    }
-    
-    func fetchYoutubeVideo() {
+    func fetchYoutubeVideo(with title: String) {
         Task {
-            self.youtubeVideoURL = try await APICall.shared.fetchYoutubeVideo(with: "Harry Potter")
-            //video = YouTubePlayer(stringLiteral: youtubeVideoURL)
+            self.youtubeVideoID = try await APICall.shared.fetchYoutubeVideo(with: title + " trailer")
         }
     }
 }
