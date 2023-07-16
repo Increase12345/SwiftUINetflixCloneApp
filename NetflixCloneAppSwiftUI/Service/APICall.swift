@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum APIError: Error {
+    case failedToFetchTrendingMovies, failedToFetchTrendingTv, failedToFetchPopularMovies, failedToFetchUpcomingMovies, failedToFetchTopRated, failedToFetchDiscover, failedToFetchYoutube
+}
+
 // Helping Constants for keys
 struct Constants {
     static let baseMovieURL = "https://api.themoviedb.org/3"
@@ -21,7 +25,7 @@ class APICall {
     // Method to fetch Trending Movies
     func fetchTrendingMovies() async throws -> [Movie] {
         let urlPath = "\(Constants.baseMovieURL)/trending/all/day?api_key=\(Constants.movieAPI)"
-        guard let url = URL(string: urlPath) else { fatalError() }
+        guard let url = URL(string: urlPath) else { throw APIError.failedToFetchTrendingMovies }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
@@ -35,7 +39,7 @@ class APICall {
     // Method to fetch Trending TV
     func fetchTrendingTv() async throws -> [Movie] {
         let urlPath = "\(Constants.baseMovieURL)/trending/tv/day?api_key=\(Constants.movieAPI)"
-        guard let url = URL(string: urlPath) else { fatalError() }
+        guard let url = URL(string: urlPath) else { throw APIError.failedToFetchTrendingTv }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
@@ -49,7 +53,7 @@ class APICall {
     // Method to fetch PopularMovies
     func fetchPopularMovies() async throws -> [Movie] {
         let urlPath = "\(Constants.baseMovieURL)/movie/popular?api_key=\(Constants.movieAPI)"
-        guard let url = URL(string: urlPath) else { fatalError() }
+        guard let url = URL(string: urlPath) else { throw APIError.failedToFetchPopularMovies }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
@@ -63,7 +67,7 @@ class APICall {
     // Method to fetch Upcoming
     func fetchUpcomingMovies() async throws -> [Movie] {
         let urlPath = "\(Constants.baseMovieURL)/movie/upcoming?api_key=\(Constants.movieAPI)"
-        guard let url = URL(string: urlPath) else { fatalError() }
+        guard let url = URL(string: urlPath) else { throw APIError.failedToFetchUpcomingMovies }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
@@ -77,7 +81,7 @@ class APICall {
     // Method to fetch TopRated
     func fetchTopRatedMovies() async throws -> [Movie] {
         let urlPath = "\(Constants.baseMovieURL)/movie/top_rated?api_key=\(Constants.movieAPI)"
-        guard let url = URL(string: urlPath) else { fatalError() }
+        guard let url = URL(string: urlPath) else { throw APIError.failedToFetchTopRated }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
@@ -91,7 +95,7 @@ class APICall {
     // Method to fetch DiscoverMovies
     func fetchDiscoverMovies() async throws -> [Movie] {
         let urlPath = "\(Constants.baseMovieURL)/discover/movie?api_key=\(Constants.movieAPI)"
-        guard let url = URL(string: urlPath) else { fatalError() }
+        guard let url = URL(string: urlPath) else { throw APIError.failedToFetchDiscover }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let decoder = JSONDecoder()
@@ -105,7 +109,7 @@ class APICall {
     //Method to fetch Video from Youtube
     func fetchYoutubeVideo(with query: String) async throws -> String {
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { fatalError() }
-        guard let url = URL(string: "\(Constants.baseYoutubeURL)q=\(query)&key=\(Constants.youtubeAPI)") else { fatalError() }
+        guard let url = URL(string: "\(Constants.baseYoutubeURL)q=\(query)&key=\(Constants.youtubeAPI)") else { throw APIError.failedToFetchYoutube }
         
         let (data, _) = try await URLSession.shared.data(from: url)
         let decodedData = try JSONDecoder().decode(Youtube.self, from: data)
