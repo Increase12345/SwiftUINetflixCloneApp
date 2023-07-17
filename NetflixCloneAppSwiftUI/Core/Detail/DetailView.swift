@@ -54,7 +54,7 @@ struct DetailView: View {
         }
         .navigationBarBackButtonHidden()
         .onAppear {
-            //vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
+            vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
         }
     }
 }

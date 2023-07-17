@@ -24,12 +24,13 @@
 		40579A9E2A5F603E00709AE5 /* HomeViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A9D2A5F603E00709AE5 /* HomeViewViewModel.swift */; };
 		40579AA02A5F605F00709AE5 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A9F2A5F605F00709AE5 /* Movie.swift */; };
 		40579AA52A5F799200709AE5 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 40579AA42A5F799200709AE5 /* Kingfisher */; };
-		40579AA82A5FA22F00709AE5 /* YouTubePlayerKit in Frameworks */ = {isa = PBXBuildFile; productRef = 40579AA72A5FA22E00709AE5 /* YouTubePlayerKit */; };
 		40579AAB2A5FA5E100709AE5 /* DetailViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AAA2A5FA5E100709AE5 /* DetailViewViewModel.swift */; };
 		40579AAD2A5FA60200709AE5 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AAC2A5FA60200709AE5 /* Youtube.swift */; };
 		40579AAF2A607D7F00709AE5 /* ComingSoonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AAE2A607D7F00709AE5 /* ComingSoonViewModel.swift */; };
 		40579AB12A60855A00709AE5 /* TopSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AB02A60855A00709AE5 /* TopSearchViewModel.swift */; };
 		40579AB52A609A4200709AE5 /* MovieRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579AB42A609A4200709AE5 /* MovieRowView.swift */; };
+		40E6FE342A65D63B008CC380 /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6FE332A65D63B008CC380 /* APIError.swift */; };
+		40E6FE362A65D718008CC380 /* APIConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40E6FE352A65D718008CC380 /* APIConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,8 @@
 		40579AAE2A607D7F00709AE5 /* ComingSoonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComingSoonViewModel.swift; sourceTree = "<group>"; };
 		40579AB02A60855A00709AE5 /* TopSearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopSearchViewModel.swift; sourceTree = "<group>"; };
 		40579AB42A609A4200709AE5 /* MovieRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieRowView.swift; sourceTree = "<group>"; };
+		40E6FE332A65D63B008CC380 /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
+		40E6FE352A65D718008CC380 /* APIConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +65,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40579AA82A5FA22F00709AE5 /* YouTubePlayerKit in Frameworks */,
 				40579AA52A5F799200709AE5 /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -142,6 +144,8 @@
 			isa = PBXGroup;
 			children = (
 				40579A9B2A5F5CFF00709AE5 /* APICall.swift */,
+				40E6FE352A65D718008CC380 /* APIConstants.swift */,
+				40E6FE332A65D63B008CC380 /* APIError.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -220,7 +224,6 @@
 			name = NetflixCloneAppSwiftUI;
 			packageProductDependencies = (
 				40579AA42A5F799200709AE5 /* Kingfisher */,
-				40579AA72A5FA22E00709AE5 /* YouTubePlayerKit */,
 			);
 			productName = NetflixCloneAppSwiftUI;
 			productReference = 40579A6D2A5F46EF00709AE5 /* NetflixCloneAppSwiftUI.app */;
@@ -252,7 +255,6 @@
 			mainGroup = 40579A642A5F46EF00709AE5;
 			packageReferences = (
 				40579AA32A5F799200709AE5 /* XCRemoteSwiftPackageReference "Kingfisher" */,
-				40579AA62A5FA22E00709AE5 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */,
 			);
 			productRefGroup = 40579A6E2A5F46EF00709AE5 /* Products */;
 			projectDirPath = "";
@@ -288,11 +290,13 @@
 				40579AB12A60855A00709AE5 /* TopSearchViewModel.swift in Sources */,
 				40579A8F2A5F4A7A00709AE5 /* TopSearchView.swift in Sources */,
 				40579A912A5F4A8700709AE5 /* DownloadsView.swift in Sources */,
+				40E6FE362A65D718008CC380 /* APIConstants.swift in Sources */,
 				40579A882A5F47D300709AE5 /* MainTabView.swift in Sources */,
 				4022E5442A646A1600A57133 /* YoutubeVideoView.swift in Sources */,
 				40579AA02A5F605F00709AE5 /* Movie.swift in Sources */,
 				40579AB52A609A4200709AE5 /* MovieRowView.swift in Sources */,
 				40579A962A5F4C9E00709AE5 /* HeaderView.swift in Sources */,
+				40E6FE342A65D63B008CC380 /* APIError.swift in Sources */,
 				40579A982A5F4E1600709AE5 /* PosterView.swift in Sources */,
 				40579A9E2A5F603E00709AE5 /* HomeViewViewModel.swift in Sources */,
 				40579AAF2A607D7F00709AE5 /* ComingSoonViewModel.swift in Sources */,
@@ -509,14 +513,6 @@
 				minimumVersion = 7.0.0;
 			};
 		};
-		40579AA62A5FA22E00709AE5 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/SvenTiigi/YouTubePlayerKit";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -524,11 +520,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 40579AA32A5F799200709AE5 /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
-		};
-		40579AA72A5FA22E00709AE5 /* YouTubePlayerKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 40579AA62A5FA22E00709AE5 /* XCRemoteSwiftPackageReference "YouTubePlayerKit" */;
-			productName = YouTubePlayerKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
