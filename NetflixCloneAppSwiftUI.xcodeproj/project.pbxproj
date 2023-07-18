@@ -143,13 +143,13 @@
 		40579A802A5F471A00709AE5 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				40579A872A5F47D300709AE5 /* MainTabView.swift */,
 				40579AA92A5FA5AD00709AE5 /* Detail */,
 				40579A922A5F4BCF00709AE5 /* Components */,
 				40579A822A5F476B00709AE5 /* Home */,
 				40579A892A5F4A1B00709AE5 /* ComingSoon */,
 				40579A8A2A5F4A2900709AE5 /* TopSearch */,
 				40579A8B2A5F4A3100709AE5 /* Downloads */,
-				40579A872A5F47D300709AE5 /* MainTabView.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";

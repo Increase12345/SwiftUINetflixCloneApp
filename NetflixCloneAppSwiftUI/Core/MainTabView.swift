@@ -36,7 +36,9 @@ struct MainTabView: View {
                     }
                 
                 // List of downloaded Moviews
-                DownloadsView()
+                NavigationStack {
+                    DownloadsView()
+                }
                     .tabItem {
                         Label("Downloads", systemImage: "arrow.down.to.line")
                     }

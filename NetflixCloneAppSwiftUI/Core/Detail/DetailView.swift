@@ -10,6 +10,7 @@ import SwiftUI
 struct DetailView: View {
     @StateObject var vm = DetailViewViewModel()
     @Environment(\.dismiss) var dismiss
+    @Environment(\.managedObjectContext) var moc
     let movie: Movie
     
     var body: some View {
@@ -41,7 +42,7 @@ struct DetailView: View {
             
             // Download moview
             Button {
-                
+                saveMovie()
             } label: {
                 Text("Download")
                     .frame(width: 130, height: 35)
@@ -54,8 +55,24 @@ struct DetailView: View {
         }
         .navigationBarBackButtonHidden()
         .onAppear {
-            vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
+            //vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
         }
+    }
+    
+    func saveMovie() {
+        let movie = MovieCore(context: moc)
+        movie.id = Int64(self.movie.id)
+        movie.title = self.movie.title
+        movie.originalName = self.movie.originalName
+        movie.originalTitle = self.movie.originalTitle
+        movie.overview = self.movie.overview
+        movie.posterPath = self.movie.posterImage
+        movie.releaseDate = self.movie.releaseDate
+        movie.voteAverage = self.movie.voteAverage ?? 0
+        movie.voteCount = Int64(self.movie.voteCount ?? 0)
+        movie.youtubeID = vm.youtubeVideoID
+        
+        try? moc.save()
     }
 }
 
