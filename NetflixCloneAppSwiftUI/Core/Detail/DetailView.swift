@@ -9,24 +9,13 @@ import SwiftUI
 
 struct DetailView: View {
     @StateObject var vm = DetailViewViewModel()
-    @Environment(\.dismiss) var dismiss
+  
     @Environment(\.managedObjectContext) var moc
     let movie: Movie
     
     var body: some View {
-        VStack {
-            
-            // Dismiss View Button
-            HStack {
-                Button {
-                    dismiss()
-                } label: {
-                    Text("< Back")
-                        .padding(.leading)
-                }
-                Spacer()
-            }
-            
+        ScrollView {
+
             // Video Player
             YoutubeVideoView(youtubeVideoID: vm.youtubeVideoID)
                 .frame(height: 250)
@@ -50,10 +39,7 @@ struct DetailView: View {
                     .cornerRadius(5)
                     .padding()
             }
-            
-            Spacer()
         }
-        .navigationBarBackButtonHidden()
         .onAppear {
             //vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
         }

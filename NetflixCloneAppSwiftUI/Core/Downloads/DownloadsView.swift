@@ -11,20 +11,20 @@ struct DownloadsView: View {
     @FetchRequest(sortDescriptors: []) var movies: FetchedResults<MovieCore>
     @Environment(\.managedObjectContext) var moc
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(movies, id: \.id) { movie in
-                    NavigationLink {
-                        let DetailMovie = Movie(id: Int(movie.id), title: movie.title, originalName: movie.originalName, originalTitle: movie.originalTitle, overview: movie.overview ?? "", posterPath: movie.posterPath, releaseDate: movie.releaseDate, voteAverage: movie.voteAverage, voteCount: Int(movie.voteCount))
-                        DetailView(movie: DetailMovie)
-                    } label: {
-                        MovieRowView(imageURL: "https://image.tmdb.org/t/p/w500\(movie.posterPath ?? "")", title: movie.title ?? "")
-                    }
+        List {
+            ForEach(movies, id: \.id) { movie in
+                NavigationLink {
+                    let DetailMovie = Movie(id: Int(movie.id), title: movie.title, originalName: movie.originalName, originalTitle: movie.originalTitle, overview: movie.overview ?? "", posterPath: movie.posterPath, releaseDate: movie.releaseDate, voteAverage: movie.voteAverage, voteCount: Int(movie.voteCount))
+                    DetailView(movie: DetailMovie)
+                } label: {
+                    MovieRowView(imageURL: "https://image.tmdb.org/t/p/w500\(movie.posterPath ?? "")", title: movie.title ?? movie.originalName ?? "")
                 }
             }
+            .onDelete(perform: deleteMovie(at:))
             .padding(.top, 10)
             .navigationTitle("Downloads")
         }
+        .listStyle(.plain)
     }
     
     func deleteMovie(at offsets: IndexSet) {

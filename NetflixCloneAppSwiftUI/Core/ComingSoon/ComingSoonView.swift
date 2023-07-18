@@ -11,19 +11,18 @@ struct ComingSoonView: View {
     @StateObject var vm = ComingSoonViewModel()
     
     var body: some View {
-        ScrollView {
-            LazyVStack {
-                ForEach(vm.comingSoonMovies, id: \.id) { movie in
-                    NavigationLink {
-                        DetailView(movie: movie)
-                    } label: {
-                        MovieRowView(imageURL: movie.posterImage, title: movie.originalTitle ?? "")
-                    }
+        List {
+            ForEach(vm.comingSoonMovies, id: \.id) { movie in
+                NavigationLink {
+                    DetailView(movie: movie)
+                } label: {
+                    MovieRowView(imageURL: movie.posterImage, title: movie.originalTitle ?? "")
                 }
             }
-            .padding(.top, 10)
-            .navigationTitle("Upcoming")
         }
+        .listStyle(.plain)
+        .padding(.top, 10)
+        .navigationTitle("Upcoming")
     }
 }
 

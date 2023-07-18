@@ -10,7 +10,6 @@ import Kingfisher
 
 struct PosterView: View {
     let movie: Movie
-    @State private var showSheet = false
     
     var body: some View {
         ZStack {
@@ -23,8 +22,8 @@ struct PosterView: View {
                 
                 
                 HStack(spacing: 30) {
-                    Button {
-                        showSheet.toggle()
+                    NavigationLink {
+                        DetailView(movie: movie)
                     } label: {
                         Text("Play")
                             .foregroundColor(.white)
@@ -49,9 +48,6 @@ struct PosterView: View {
                 }
                 .padding(.bottom, 20)
             }
-        }
-        .fullScreenCover(isPresented: $showSheet) {
-            DetailView(movie: movie)
         }
     }
 }

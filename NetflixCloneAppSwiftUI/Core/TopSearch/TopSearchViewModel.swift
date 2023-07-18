@@ -11,7 +11,7 @@ import Foundation
 class TopSearchViewModel: ObservableObject {
     @Published var searchText = ""
     @Published var searchedMovies = [Movie]()
-    @Published var recentrySearchedMovies = [Movie]()
+    //@Published var recentrySearchedMovies = [Movie]()
     
     func searchForMovie(with query: String) async throws {
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }

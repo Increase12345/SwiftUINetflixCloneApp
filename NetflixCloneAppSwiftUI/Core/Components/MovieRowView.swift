@@ -22,10 +22,6 @@ struct MovieRowView: View {
             Text(title)
                 .multilineTextAlignment(.leading)
             Spacer()
-            Image(systemName: "play.circle")
-                .resizable()
-                .scaledToFit()
-                .frame(width: 30)
         }
         .padding(.horizontal)
     }
