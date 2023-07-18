@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct NetflixCloneAppSwiftUIApp: App {
+    @StateObject var dataController = DataController()
+    
     var body: some Scene {
         WindowGroup {
             MainTabView()
+                .environment(\.managedObjectContext, dataController.container.viewContext)
         }
     }
 }
