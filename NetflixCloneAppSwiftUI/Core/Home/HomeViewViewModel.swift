@@ -17,6 +17,7 @@ class HomeViewViewModel: ObservableObject {
     
     init() {
         fetchTrendingMovies()
+        NotificationManager.shared.requestAutorization()
     }
     
     private func fetchTrendingMovies() {

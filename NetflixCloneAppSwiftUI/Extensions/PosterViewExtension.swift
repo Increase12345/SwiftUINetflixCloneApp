@@ -13,6 +13,8 @@ extension PosterView {
         for i in movies {
             if i.id == self.movie.id {
                 addingMovie = false
+                self.showAlert.toggle()
+                self.showAlertMessage = "You already have \(i.title ?? i.originalName ?? i.originalTitle ?? "") in your download list"
             }
         }
         
@@ -30,6 +32,8 @@ extension PosterView {
             addMovie.youtubeID = ""
             
             try? moc.save()
+            
+            NotificationManager.shared.scheduleNotification(title: "Success!", subtitle: "\(addMovie.title ?? addMovie.originalName ?? addMovie.originalTitle ?? "") successfully downloaded!")
         }
     }
 }

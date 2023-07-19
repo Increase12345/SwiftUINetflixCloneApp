@@ -13,6 +13,8 @@ extension DetailView {
         for i in movies {
             if i.id == self.movie.id {
                 addingMovie = false
+                vm.showAlertMessage = "You already have \(i.title ?? i.originalName ?? i.originalTitle ?? "") in your download list"
+                vm.showAlert.toggle()
             }
         }
         
@@ -30,6 +32,8 @@ extension DetailView {
             addMovie.youtubeID = vm.youtubeVideoID
             
             try? moc.save()
+    
+            NotificationManager.shared.scheduleNotification(title: "Success!", subtitle: "\(addMovie.title ?? addMovie.originalName ?? addMovie.originalTitle ?? "") successfully downloaded!")
         }
     }
 }

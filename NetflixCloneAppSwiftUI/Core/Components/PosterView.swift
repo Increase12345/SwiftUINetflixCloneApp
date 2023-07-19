@@ -11,6 +11,8 @@ import Kingfisher
 struct PosterView: View {
     @Environment(\.managedObjectContext) var moc
     @FetchRequest(sortDescriptors: []) var movies: FetchedResults<MovieCore>
+    @State var showAlert = false
+    @State var showAlertMessage = ""
     let movie: Movie
     
     var body: some View {
@@ -50,6 +52,9 @@ struct PosterView: View {
                 }
                 .padding(.bottom, 20)
             }
+        }
+        .alert("Alert", isPresented: $showAlert) {} message: {
+            Text(showAlertMessage)
         }
     }
 }

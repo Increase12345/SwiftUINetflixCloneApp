@@ -11,6 +11,8 @@ import YouTubePlayerKit
 @MainActor
 class DetailViewViewModel: ObservableObject {
     @Published var youtubeVideoID = "GYkq9Rgoj8E"
+    @Published var showAlert = false
+    @Published var showAlertMessage = ""
     
     func fetchYoutubeVideo(with title: String) {
         Task {

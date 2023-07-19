@@ -44,6 +44,9 @@ struct MainTabView: View {
                 }
         }
         .preferredColorScheme(.dark)
+        .onAppear {
+            UIApplication.shared.applicationIconBadgeNumber = 0
+        }
     }
 }
 

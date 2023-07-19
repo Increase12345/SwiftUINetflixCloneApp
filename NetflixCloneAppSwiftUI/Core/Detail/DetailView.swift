@@ -43,6 +43,11 @@ struct DetailView: View {
         .onAppear {
             //vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
         }
+        
+        // Alert in case user wants to download a movie which already downloaded
+        .alert("Alert", isPresented: $vm.showAlert) {} message: {
+            Text(vm.showAlertMessage)
+        }
     }
 }
 
