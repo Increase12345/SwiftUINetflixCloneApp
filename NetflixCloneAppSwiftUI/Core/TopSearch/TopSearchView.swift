@@ -29,15 +29,20 @@ struct TopSearchView: View {
                         })
                     }
                 } else {
-                    VStack {
-                        Text("Recently searched")
-                            .padding(.leading)
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Recently searched:")
                             .foregroundColor(.secondary)
                             .font(.footnote)
+                        
                         ForEach(vm.recentrySearchedMovies, id: \.id) { recentMovie in
-                            MovieRowView(imageURL: recentMovie.posterImage, title: recentMovie.title ?? "")
+                            Text(recentMovie.title ?? recentMovie.originalTitle ?? recentMovie.originalName ?? "")
+                                .onTapGesture {
+                                    vm.searchText = recentMovie.title ?? recentMovie.originalTitle ?? recentMovie.originalName ?? ""
+                                }
                         }
                     }
+                    .padding(.leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
             }
             .navigationTitle("Search")
