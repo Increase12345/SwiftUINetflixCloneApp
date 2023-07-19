@@ -26,8 +26,7 @@ struct TopSearchView: View {
                             MovieRowView(imageURL: movie.posterImage, title: movie.title ?? "")
                         }
                         .simultaneousGesture(TapGesture().onEnded {
-                            vm.recentrySearchedMovies.insert(movie, at: 0)
-                            vm.saveRecentMovies()
+                            vm.addRecentMovie(movie: movie)
                         })
                     }
                     

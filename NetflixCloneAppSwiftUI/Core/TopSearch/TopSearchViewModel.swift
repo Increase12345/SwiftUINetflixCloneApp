@@ -13,12 +13,14 @@ class TopSearchViewModel: ObservableObject {
     @Published var searchedMovies = [Movie]()
     @Published var recentrySearchedMovies = [Movie]()
     
+    // Storage path for recent searched movies
     let savePathForRecentMovie = FileManager.documentsDirectory.appendingPathComponent("SavedMovies")
     
     init() {
         fetchRecentMovies()
     }
     
+    // Search movies on movie API
     func searchForMovie(with query: String) async throws {
         guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
         let urlPath = "https://api.themoviedb.org/3/search/movie?query=\(query)&api_key=8fc626b9b34342fd29749f14d1e6db2e"
@@ -37,6 +39,7 @@ class TopSearchViewModel: ObservableObject {
         }
     }
     
+    // Helping func to Encone recently search movies to a storage
     func saveRecentMovies() {
         if recentrySearchedMovies.count > 5 {
             recentrySearchedMovies.removeLast()
@@ -46,6 +49,7 @@ class TopSearchViewModel: ObservableObject {
         }
     }
     
+    // Encoding recent search movies to the storage
     func saveRecentSearchToDataBase() {
         do {
             let data = try JSONEncoder().encode(self.recentrySearchedMovies)
@@ -55,12 +59,28 @@ class TopSearchViewModel: ObservableObject {
         }
     }
     
+    // Decoding movie from a storage when launching the app
     func fetchRecentMovies() {
         do {
             let data = try Data(contentsOf: savePathForRecentMovie)
             self.recentrySearchedMovies = try JSONDecoder().decode([Movie].self, from: data)
         } catch {
             print("Failed to fetch recent movies \(error.localizedDescription)")
+        }
+    }
+    
+    // helping function for checking if recent search movie exists
+    func addRecentMovie(movie: Movie) {
+        var addMovie = true 
+        for i in recentrySearchedMovies {
+            if i.id == movie.id {
+                addMovie = false
+            }
+        }
+        
+        if addMovie {
+            recentrySearchedMovies.insert(movie, at: 0)
+            saveRecentMovies()
         }
     }
 }
