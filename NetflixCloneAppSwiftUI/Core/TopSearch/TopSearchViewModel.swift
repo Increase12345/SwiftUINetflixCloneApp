@@ -37,7 +37,16 @@ class TopSearchViewModel: ObservableObject {
         }
     }
     
-    func saveRecentMovie() {
+    func saveRecentMovies() {
+        if recentrySearchedMovies.count > 5 {
+            recentrySearchedMovies.removeLast()
+            saveRecentSearchToDataBase()
+        } else {
+            saveRecentSearchToDataBase()
+        }
+    }
+    
+    func saveRecentSearchToDataBase() {
         do {
             let data = try JSONEncoder().encode(self.recentrySearchedMovies)
             try data.write(to: savePathForRecentMovie, options: [.atomic, .completeFileProtection])

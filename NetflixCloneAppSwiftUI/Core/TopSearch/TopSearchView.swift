@@ -16,6 +16,8 @@ struct TopSearchView: View {
             SearchBarView(text: $vm.searchText)
             
             ScrollView {
+                
+                // Displaying list of Searching now movies
                 if !vm.searchText.isEmpty {
                     ForEach(vm.searchedMovies, id: \.id) { movie in
                         NavigationLink {
@@ -24,10 +26,12 @@ struct TopSearchView: View {
                             MovieRowView(imageURL: movie.posterImage, title: movie.title ?? "")
                         }
                         .simultaneousGesture(TapGesture().onEnded {
-                            vm.recentrySearchedMovies.append(movie)
-                            vm.saveRecentMovie()
+                            vm.recentrySearchedMovies.insert(movie, at: 0)
+                            vm.saveRecentMovies()
                         })
                     }
+                    
+                    // Displaying list of Recently Searched movies
                 } else {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Recently searched:")
