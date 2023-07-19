@@ -11,21 +11,22 @@ struct HomeView: View {
     @StateObject var vm = HomeViewViewModel()
     
     var body: some View {
-        ScrollView {
-            VStack {
-                HeaderView()
-                
-                PosterView(movie: vm.upcomingMovies.last ?? Movie.MOCK_DATA)
-                
-                SectionsOfMovies(sectionTitle: "Trending Movies", section: vm.trendingMovies)
-                
-                SectionsOfMovies(sectionTitle: "Trending TV", section: vm.trendingTV)
-                
-                SectionsOfMovies(sectionTitle: "Popular", section: vm.popularMovies)
-                
-                SectionsOfMovies(sectionTitle: "Upcoming Movies", section: vm.upcomingMovies)
-                
-                SectionsOfMovies(sectionTitle: "Top Rated", section: vm.topRatedMovies)
+        VStack {
+            HeaderView()
+            ScrollView {
+                VStack {
+                    PosterView(movie: vm.upcomingMovies.last ?? Movie.MOCK_DATA)
+                    
+                    SectionsOfMovies(sectionTitle: "Trending Movies", section: vm.trendingMovies)
+                    
+                    SectionsOfMovies(sectionTitle: "Trending TV", section: vm.trendingTV)
+                    
+                    SectionsOfMovies(sectionTitle: "Popular", section: vm.popularMovies)
+                    
+                    SectionsOfMovies(sectionTitle: "Upcoming Movies", section: vm.upcomingMovies)
+                    
+                    SectionsOfMovies(sectionTitle: "Top Rated", section: vm.topRatedMovies)
+                }
             }
         }
     }
