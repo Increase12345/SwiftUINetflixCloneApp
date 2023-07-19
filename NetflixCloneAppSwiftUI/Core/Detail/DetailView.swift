@@ -20,6 +20,15 @@ struct DetailView: View {
             YoutubeVideoView(youtubeVideoID: vm.youtubeVideoID)
                 .frame(height: 250)
             
+            // Rating row
+            HStack {
+                RatingStarsCell(rating: movie.voteAverage ?? 0)
+                Spacer()
+                Image(systemName: "hand.thumbsup")
+                Text("\(movie.voteCount ?? 0)")
+            }
+            .padding(.horizontal)
+            
             // Overview about selected movie
             VStack(alignment: .leading) {
                 Text(movie.title ?? movie.originalName ?? "No Title")
