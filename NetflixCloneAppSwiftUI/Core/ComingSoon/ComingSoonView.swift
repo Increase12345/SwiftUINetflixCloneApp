@@ -11,7 +11,7 @@ struct ComingSoonView: View {
     @StateObject var vm = ComingSoonViewModel()
     
     var body: some View {
-        List {
+        ScrollView {
             ForEach(vm.comingSoonMovies, id: \.id) { movie in
                 NavigationLink {
                     DetailView(movie: movie)
@@ -20,7 +20,6 @@ struct ComingSoonView: View {
                 }
             }
         }
-        .listStyle(.plain)
         .padding(.top, 10)
         .navigationTitle("Upcoming")
     }
