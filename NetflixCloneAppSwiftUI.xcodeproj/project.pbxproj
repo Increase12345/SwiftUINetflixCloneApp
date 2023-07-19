@@ -11,6 +11,9 @@
 		4022D2392A6715BF0016323D /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022D2382A6715BF0016323D /* DataController.swift */; };
 		4022D23D2A6749620016323D /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022D23C2A6749620016323D /* SearchBarView.swift */; };
 		4022D2412A677C6A0016323D /* FileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022D2402A677C6A0016323D /* FileManager.swift */; };
+		4022D2492A6874750016323D /* DetailViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022D2482A6874750016323D /* DetailViewExtension.swift */; };
+		4022D24B2A68756F0016323D /* DownloadsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022D24A2A68756F0016323D /* DownloadsExtension.swift */; };
+		4022D24D2A6876440016323D /* PosterViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022D24C2A6876440016323D /* PosterViewExtension.swift */; };
 		4022E5442A646A1600A57133 /* YoutubeVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4022E5432A646A1600A57133 /* YoutubeVideoView.swift */; };
 		40579A712A5F46EF00709AE5 /* NetflixCloneAppSwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 40579A702A5F46EF00709AE5 /* NetflixCloneAppSwiftUIApp.swift */; };
 		40579A752A5F46F100709AE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 40579A742A5F46F100709AE5 /* Assets.xcassets */; };
@@ -42,6 +45,9 @@
 		4022D2382A6715BF0016323D /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		4022D23C2A6749620016323D /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		4022D2402A677C6A0016323D /* FileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManager.swift; sourceTree = "<group>"; };
+		4022D2482A6874750016323D /* DetailViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewExtension.swift; sourceTree = "<group>"; };
+		4022D24A2A68756F0016323D /* DownloadsExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadsExtension.swift; sourceTree = "<group>"; };
+		4022D24C2A6876440016323D /* PosterViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PosterViewExtension.swift; sourceTree = "<group>"; };
 		4022E5432A646A1600A57133 /* YoutubeVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeVideoView.swift; sourceTree = "<group>"; };
 		40579A6D2A5F46EF00709AE5 /* NetflixCloneAppSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NetflixCloneAppSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		40579A702A5F46EF00709AE5 /* NetflixCloneAppSwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetflixCloneAppSwiftUIApp.swift; sourceTree = "<group>"; };
@@ -93,6 +99,9 @@
 			isa = PBXGroup;
 			children = (
 				4022D2402A677C6A0016323D /* FileManager.swift */,
+				4022D2482A6874750016323D /* DetailViewExtension.swift */,
+				4022D24A2A68756F0016323D /* DownloadsExtension.swift */,
+				4022D24C2A6876440016323D /* PosterViewExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -311,8 +320,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				40579A712A5F46EF00709AE5 /* NetflixCloneAppSwiftUIApp.swift in Sources */,
+				4022D24D2A6876440016323D /* PosterViewExtension.swift in Sources */,
 				40579A842A5F477E00709AE5 /* HomeView.swift in Sources */,
 				40579A8D2A5F4A7000709AE5 /* ComingSoonView.swift in Sources */,
+				4022D2492A6874750016323D /* DetailViewExtension.swift in Sources */,
 				40579A9C2A5F5CFF00709AE5 /* APICall.swift in Sources */,
 				4022D23D2A6749620016323D /* SearchBarView.swift in Sources */,
 				40579A942A5F4BE600709AE5 /* DetailView.swift in Sources */,
@@ -331,6 +342,7 @@
 				40579A9E2A5F603E00709AE5 /* HomeViewViewModel.swift in Sources */,
 				4022D2372A6714B40016323D /* MovieCore.xcdatamodeld in Sources */,
 				40579AAF2A607D7F00709AE5 /* ComingSoonViewModel.swift in Sources */,
+				4022D24B2A68756F0016323D /* DownloadsExtension.swift in Sources */,
 				40579AAD2A5FA60200709AE5 /* Youtube.swift in Sources */,
 				4022D2392A6715BF0016323D /* DataController.swift in Sources */,
 				40579AAB2A5FA5E100709AE5 /* DetailViewViewModel.swift in Sources */,

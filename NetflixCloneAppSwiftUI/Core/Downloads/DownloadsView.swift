@@ -26,14 +26,6 @@ struct DownloadsView: View {
         }
         .listStyle(.plain)
     }
-    
-    func deleteMovie(at offsets: IndexSet) {
-        for offset in offsets {
-            let movie = movies[offset]
-            moc.delete(movie)
-        }
-        try? moc.save()
-    }
 }
 
 struct DownloadsView_Previews: PreviewProvider {

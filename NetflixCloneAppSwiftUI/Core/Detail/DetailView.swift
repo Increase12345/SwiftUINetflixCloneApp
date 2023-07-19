@@ -9,10 +9,8 @@ import SwiftUI
 
 struct DetailView: View {
     @StateObject var vm = DetailViewViewModel()
-  
     @FetchRequest(sortDescriptors: []) var movies: FetchedResults<MovieCore>
     @Environment(\.managedObjectContext) var moc
-    
     let movie: Movie
     
     var body: some View {
@@ -44,31 +42,6 @@ struct DetailView: View {
         }
         .onAppear {
             //vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
-        }
-    }
-    
-    func saveMovie() {
-        var addingMovie = true
-        for i in movies {
-            if i.id == self.movie.id {
-                addingMovie = false
-            }
-        }
-        
-        if addingMovie {
-            let addMovie = MovieCore(context: moc)
-            addMovie.id = Int64(self.movie.id)
-            addMovie.title = self.movie.title
-            addMovie.originalName = self.movie.originalName
-            addMovie.originalTitle = self.movie.originalTitle
-            addMovie.overview = self.movie.overview
-            addMovie.posterPath = self.movie.posterImage
-            addMovie.releaseDate = self.movie.releaseDate
-            addMovie.voteAverage = self.movie.voteAverage ?? 0
-            addMovie.voteCount = Int64(self.movie.voteCount ?? 0)
-            addMovie.youtubeID = vm.youtubeVideoID
-            
-            try? moc.save()
         }
     }
 }
