@@ -9,6 +9,8 @@ import SwiftUI
 import Kingfisher
 
 struct PosterView: View {
+    @Environment(\.managedObjectContext) var moc
+    @FetchRequest(sortDescriptors: []) var movies: FetchedResults<MovieCore>
     let movie: Movie
     
     var body: some View {
@@ -35,7 +37,7 @@ struct PosterView: View {
                     }
                     
                     Button {
-                        
+                        saveMovie()
                     } label: {
                         Text("Download")
                             .foregroundColor(.white)
@@ -48,6 +50,31 @@ struct PosterView: View {
                 }
                 .padding(.bottom, 20)
             }
+        }
+    }
+    
+    func saveMovie() {
+        var addingMovie = true
+        for i in movies {
+            if i.id == self.movie.id {
+                addingMovie = false
+            }
+        }
+        
+        if addingMovie {
+            let addMovie = MovieCore(context: moc)
+            addMovie.id = Int64(self.movie.id)
+            addMovie.title = self.movie.title
+            addMovie.originalName = self.movie.originalName
+            addMovie.originalTitle = self.movie.originalTitle
+            addMovie.overview = self.movie.overview
+            addMovie.posterPath = self.movie.posterImage
+            addMovie.releaseDate = self.movie.releaseDate
+            addMovie.voteAverage = self.movie.voteAverage ?? 0
+            addMovie.voteCount = Int64(self.movie.voteCount ?? 0)
+            addMovie.youtubeID = ""
+            
+            try? moc.save()
         }
     }
 }

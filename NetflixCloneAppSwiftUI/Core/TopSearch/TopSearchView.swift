@@ -16,11 +16,17 @@ struct TopSearchView: View {
             SearchBarView(text: $vm.searchText)
             
             List {
-                ForEach(vm.searchedMovies, id: \.id) { movie in
-                    NavigationLink {
-                        DetailView(movie: movie)
-                    } label: {
-                        MovieRowView(imageURL: movie.posterImage, title: movie.title ?? "")
+                if !vm.searchText.isEmpty {
+                    ForEach(vm.searchedMovies, id: \.id) { movie in
+                        NavigationLink {
+                            DetailView(movie: movie)
+                        } label: {
+                            MovieRowView(imageURL: movie.posterImage, title: movie.title ?? "")
+                        }
+                    }
+                } else {
+                    ForEach(vm.recentrySearchedMovies, id: \.id) { recentMovie in
+                        Text(recentMovie.title ?? recentMovie.originalName ?? recentMovie.originalTitle ?? "")
                     }
                 }
             }
@@ -30,7 +36,6 @@ struct TopSearchView: View {
         .padding(.bottom, 1)
         
         // Searching Listener
-        //.searchable(text: $vm.searchText)
         .onChange(of: vm.searchText) { _ in
             Task {
                 try await vm.searchForMovie(with: vm.searchText)
