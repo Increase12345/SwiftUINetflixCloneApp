@@ -1,8 +1,10 @@
 <h1 align="center">SwiftUI Netflix Clone</h1>
 <h3 align="center">Working with SwiftUI, API (themoviedb, Youtube), LocalNotificationCenter, MVVM, Kingfisher, Async/Await, Downloading Movies in CoreData, Storing searched Movies on phone Storage</h3>
 
+<h3 align="center">Demo Video</h3>
 ![](Netflix.gif)
 
+<h3 align="center">Demo Screenshots</h3>
 <p align="center">
   <img src="https://github.com/Increase12345/SwiftUINetflixCloneApp/assets/98255061/9f9a0280-9b7d-4247-99b6-63e8223af455" width="200" />
   <img src="https://github.com/Increase12345/SwiftUINetflixCloneApp/assets/98255061/68de614c-9161-43d6-ae38-0102103832ad" width="200" />
