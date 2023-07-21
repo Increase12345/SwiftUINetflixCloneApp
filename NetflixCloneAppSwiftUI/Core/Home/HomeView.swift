@@ -29,6 +29,16 @@ struct HomeView: View {
                 }
             }
         }
+        .onReceive(APICall.shared.$error) { error in
+            if error != nil {
+                vm.showAlert = true
+            }
+        }
+        .alert("Erorr", isPresented: $vm.showAlert) {
+            Button("Ok") { vm.showAlert = false }
+        } message: {
+            Text(APICall.shared.error ?? "")
+        }
     }
 }
 

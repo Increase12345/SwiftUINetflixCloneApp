@@ -15,6 +15,8 @@ class HomeViewViewModel: ObservableObject {
     @Published var upcomingMovies = [Movie]()
     @Published var topRatedMovies = [Movie]()
     
+    @Published var showAlert = false
+    
     init() {
         fetchTrendingMovies()
         NotificationManager.shared.requestAutorization()
