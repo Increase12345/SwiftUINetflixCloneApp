@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import YouTubePlayerKit
 
 @MainActor
 class DetailViewViewModel: ObservableObject {
