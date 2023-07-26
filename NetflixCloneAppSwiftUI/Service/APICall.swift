@@ -11,7 +11,7 @@ import Foundation
 class APICall {
     static let shared = APICall()
     
-    @Published var error: String?
+    @Published private(set) var error: String?
     
     // Method to fetch Trending Movies
     func fetchTrendingMovies() async throws -> [Movie] {

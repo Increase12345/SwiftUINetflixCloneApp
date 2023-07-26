@@ -10,8 +10,8 @@ import Foundation
 @MainActor
 class TopSearchViewModel: ObservableObject {
     @Published var searchText = ""
-    @Published var searchedMovies = [Movie]()
-    @Published var recentrySearchedMovies = [Movie]()
+    @Published private(set) var searchedMovies = [Movie]()
+    @Published private(set) var recentrySearchedMovies = [Movie]()
     
     // Storage path for recent searched movies
     let savePathForRecentMovie = FileManager.documentsDirectory.appendingPathComponent("SavedMovies")

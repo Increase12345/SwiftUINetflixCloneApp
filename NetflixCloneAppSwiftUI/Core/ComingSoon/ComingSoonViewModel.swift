@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class ComingSoonViewModel: ObservableObject {
-    @Published var comingSoonMovies = [Movie]()
+    @Published private(set) var comingSoonMovies = [Movie]()
     
     init() {
        fetchDiscoverMovies()

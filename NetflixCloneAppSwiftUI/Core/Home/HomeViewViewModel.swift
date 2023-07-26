@@ -9,11 +9,11 @@ import Foundation
 
 @MainActor
 class HomeViewViewModel: ObservableObject {
-    @Published var trendingMovies = [Movie]()
-    @Published var trendingTV = [Movie]()
-    @Published var popularMovies = [Movie]()
-    @Published var upcomingMovies = [Movie]()
-    @Published var topRatedMovies = [Movie]()
+    @Published private(set) var trendingMovies = [Movie]()
+    @Published private(set) var trendingTV = [Movie]()
+    @Published private(set) var popularMovies = [Movie]()
+    @Published private(set) var upcomingMovies = [Movie]()
+    @Published private(set) var topRatedMovies = [Movie]()
     
     @Published var showAlert = false
     

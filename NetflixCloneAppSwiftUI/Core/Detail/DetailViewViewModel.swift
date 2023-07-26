@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class DetailViewViewModel: ObservableObject {
-    @Published var youtubeVideoID = "GYkq9Rgoj8E"
+    @Published private(set) var youtubeVideoID = "GYkq9Rgoj8E"
     @Published var showAlert = false
     @Published var showAlertMessage = ""
     
