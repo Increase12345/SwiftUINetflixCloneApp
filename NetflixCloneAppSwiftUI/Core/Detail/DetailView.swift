@@ -50,7 +50,7 @@ struct DetailView: View {
             }
         }
         .onAppear {
-            //vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
+            vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
         }
         
         // Alert in case user wants to download a movie which already downloaded

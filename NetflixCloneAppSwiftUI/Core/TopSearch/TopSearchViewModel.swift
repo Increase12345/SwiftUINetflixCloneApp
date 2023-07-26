@@ -40,7 +40,7 @@ class TopSearchViewModel: ObservableObject {
     }
     
     // Helping func to Encone recently search movies to a storage
-    func saveRecentMovies() {
+    private func saveRecentMovies() {
         if recentrySearchedMovies.count > 5 {
             recentrySearchedMovies.removeLast()
             saveRecentSearchToDataBase()
@@ -50,7 +50,7 @@ class TopSearchViewModel: ObservableObject {
     }
     
     // Encoding recent search movies to the storage
-    func saveRecentSearchToDataBase() {
+    private func saveRecentSearchToDataBase() {
         do {
             let data = try JSONEncoder().encode(self.recentrySearchedMovies)
             try data.write(to: savePathForRecentMovie, options: [.atomic, .completeFileProtection])
@@ -60,7 +60,7 @@ class TopSearchViewModel: ObservableObject {
     }
     
     // Decoding movie from a storage when launching the app
-    func fetchRecentMovies() {
+    private func fetchRecentMovies() {
         do {
             let data = try Data(contentsOf: savePathForRecentMovie)
             self.recentrySearchedMovies = try JSONDecoder().decode([Movie].self, from: data)
