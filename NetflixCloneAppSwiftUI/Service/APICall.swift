@@ -13,6 +13,8 @@ class APICall {
     
     @Published private(set) var error: String?
     
+    private init() { }
+    
     // Method to fetch Trending Movies
     func fetchTrendingMovies() async throws -> [Movie] {
         do {
