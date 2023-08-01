@@ -35,7 +35,29 @@ final class APICall {
             return []
         }
     }
-  
+    
+    // Method for searching Movies
+    func searchForMovies(with query: String) async throws -> [Movie] {
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { throw APIError.inavlidData }
+        let urlPath = "https://api.themoviedb.org/3/search/movie?query=\(query)&api_key=8fc626b9b34342fd29749f14d1e6db2e"
+        guard let url = URL(string: urlPath) else { throw APIError.invalidURL }
+        
+        do {
+            let (data, _) = try await URLSession.shared.data(from: url)
+            let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
+            
+            let decodedData = try decoder.decode(Movies.self, from: data)
+            
+            return decodedData.results
+        } catch {
+            await MainActor.run {
+                self.error = "Failed to search for Movies. \(error.localizedDescription)"
+            }
+            return []
+        }
+    }
+    
     
     //Method to fetch Video from Youtube
     func fetchYoutubeVideo(with query: String) async throws -> String {

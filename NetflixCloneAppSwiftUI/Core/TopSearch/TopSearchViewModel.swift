@@ -13,44 +13,20 @@ final class TopSearchViewModel: ObservableObject {
     @Published private(set) var searchedMovies = [Movie]()
     @Published private(set) var recentrySearchedMovies = [Movie]()
     
-    // Storage path for recent searched movies
+    // FileManager path for recent searched movies
     let savePathForRecentMovie = FileManager.documentsDirectory.appendingPathComponent("SavedMovies")
     
     init() {
-        fetchRecentMovies()
+        fetchRecentSearchMovies()
     }
     
-    // Search movies on movie API
+    // Search for movies on movie API
     func searchForMovie(with query: String) async throws {
-        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else { return }
-        let urlPath = "https://api.themoviedb.org/3/search/movie?query=\(query)&api_key=8fc626b9b34342fd29749f14d1e6db2e"
-        guard let url = URL(string: urlPath) else { return }
-        
-        do {
-            let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            let decodedData = try decoder.decode(Movies.self, from: data)
-            
-            self.searchedMovies = decodedData.results
-        } catch {
-            print(error)
-        }
+        self.searchedMovies = try await APICall.shared.searchForMovies(with: query)
     }
     
-    // Helping func to Encone recently search movies to a storage
-    private func saveRecentMovies() {
-        if recentrySearchedMovies.count > 5 {
-            recentrySearchedMovies.removeLast()
-            saveRecentSearchToDataBase()
-        } else {
-            saveRecentSearchToDataBase()
-        }
-    }
-    
-    // Encoding recent search movies to the storage
-    private func saveRecentSearchToDataBase() {
+    // Encoding recent search movies for FileManager
+    private func encodeRecentSearchMovies() {
         do {
             let data = try JSONEncoder().encode(self.recentrySearchedMovies)
             try data.write(to: savePathForRecentMovie, options: [.atomic, .completeFileProtection])
@@ -59,8 +35,8 @@ final class TopSearchViewModel: ObservableObject {
         }
     }
     
-    // Decoding movie from a storage when launching the app
-    private func fetchRecentMovies() {
+    // Decoding recently search movies from FileManager
+    private func fetchRecentSearchMovies() {
         do {
             let data = try Data(contentsOf: savePathForRecentMovie)
             self.recentrySearchedMovies = try JSONDecoder().decode([Movie].self, from: data)
@@ -69,18 +45,12 @@ final class TopSearchViewModel: ObservableObject {
         }
     }
     
-    // helping function for checking if recent search movie exists
-    func addRecentMovie(movie: Movie) {
-        var addMovie = true 
-        for i in recentrySearchedMovies {
-            if i.id == movie.id {
-                addMovie = false
-            }
+    // Checking and Saving recently search movies to FileManager
+    func addAndSaveRecentMovie(movie: Movie) {
+        if recentrySearchedMovies.count >= 3 {
+            recentrySearchedMovies.removeLast()
         }
-        
-        if addMovie {
-            recentrySearchedMovies.insert(movie, at: 0)
-            saveRecentMovies()
-        }
+        recentrySearchedMovies.insert(movie, at: 0)
+        encodeRecentSearchMovies()
     }
 }
