@@ -18,17 +18,26 @@ final class HomeViewViewModel: ObservableObject {
     @Published var showAlert = false
     
     init() {
-        fetchTrendingMovies()
+        fetchMoviesAndTv()
         NotificationManager.shared.requestAutorization()
     }
     
-    private func fetchTrendingMovies() {
+    private func fetchMoviesAndTv() {
         Task {
-            self.trendingMovies = try await APICall.shared.fetchTrendingMovies()
-            self.trendingTV = try await APICall.shared.fetchTrendingTv()
-            self.popularMovies = try await APICall.shared.fetchPopularMovies()
-            self.upcomingMovies = try await APICall.shared.fetchUpcomingMovies()
-            self.topRatedMovies = try await APICall.shared.fetchTopRatedMovies()
+            // Fetching Trending Movies
+            self.trendingMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.tredingMovies)
+            
+            // Fetching Trending Tv
+            self.trendingTV = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.trendingTv)
+            
+            // Fetching Popular Movies
+            self.popularMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.popularMovies)
+            
+            // Fetching Upcoming Movies
+            self.upcomingMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.upcomingMovies)
+            
+            // Fetching Top Rated Movies
+            self.topRatedMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.topRatedMovies)
         }
     }
 }

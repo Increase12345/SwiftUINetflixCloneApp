@@ -15,9 +15,8 @@ final class APICall {
     private init() { }
     
     // Method to fetch Trending Movies
-    func fetchTrendingMovies() async throws -> [Movie] {
+    func fetchMoviesAndTv(urlPath: String) async throws -> [Movie] {
         do {
-            let urlPath = "\(Constants.baseMovieURL)/trending/all/day?api_key=\(Constants.movieAPI)"
             guard let url = URL(string: urlPath) else { throw APIError.invalidURL }
             
             let (data, response) = try await URLSession.shared.data(from: url)
@@ -30,115 +29,13 @@ final class APICall {
             
             return decodedData.results
         } catch {
-            self.error = "Failed to fetch Trending Movies. \(error.localizedDescription)"
+            await MainActor.run {
+                self.error = "Failed to fetch Trending Movies. \(error.localizedDescription)"
+            }
             return []
         }
     }
-    
-    // Method to fetch Trending TV
-    func fetchTrendingTv() async throws -> [Movie] {
-        do {
-            let urlPath = "\(Constants.baseMovieURL)/trending/tv/day?api_key=\(Constants.movieAPI)"
-            guard let url = URL(string: urlPath) else { throw APIError.invalidURL }
-            
-            let (data, response) = try await URLSession.shared.data(from: url)
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.serverError }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            guard let decodedData = try? decoder.decode(Movies.self, from: data) else { throw APIError.inavlidData }
-            
-            return decodedData.results
-        } catch {
-            self.error = "Failed to fetch Trending Tv. \(error.localizedDescription)"
-            return []
-        }
-    }
-    
-    // Method to fetch PopularMovies
-    func fetchPopularMovies() async throws -> [Movie] {
-        do {
-            let urlPath = "\(Constants.baseMovieURL)/movie/popular?api_key=\(Constants.movieAPI)"
-            guard let url = URL(string: urlPath) else { throw APIError.invalidURL }
-            
-            let (data, response) = try await URLSession.shared.data(from: url)
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.serverError }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            guard let decodedData = try? decoder.decode(Movies.self, from: data) else { throw APIError.inavlidData }
-            
-            return decodedData.results
-        } catch {
-            self.error = "Failed to fetch Popular Movies. \(error.localizedDescription)"
-            return []
-        }
-    }
-    
-    // Method to fetch Upcoming
-    func fetchUpcomingMovies() async throws -> [Movie] {
-        do {
-            let urlPath = "\(Constants.baseMovieURL)/movie/upcoming?api_key=\(Constants.movieAPI)"
-            guard let url = URL(string: urlPath) else { throw APIError.invalidURL }
-            
-            let (data, response) = try await URLSession.shared.data(from: url)
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.serverError }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            guard let decodedData = try? decoder.decode(Movies.self, from: data) else { throw APIError.inavlidData }
-            
-            return decodedData.results
-        } catch {
-            self.error = "Failed to fetch Upcoming Movies. \(error.localizedDescription)"
-            return []
-        }
-    }
-    
-    // Method to fetch TopRated
-    func fetchTopRatedMovies() async throws -> [Movie] {
-        do {
-            let urlPath = "\(Constants.baseMovieURL)/movie/top_rated?api_key=\(Constants.movieAPI)"
-            guard let url = URL(string: urlPath) else { throw APIError.invalidURL }
-            
-            let (data, response) = try await URLSession.shared.data(from: url)
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.serverError }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            guard let decodedData = try? decoder.decode(Movies.self, from: data) else { throw APIError.inavlidData }
-            
-            return decodedData.results
-        } catch {
-            self.error = "Failed to fetch Top rated Movies. \(error.localizedDescription)"
-            return []
-        }
-    }
-    
-    // Method to fetch DiscoverMovies
-    func fetchDiscoverMovies() async throws -> [Movie] {
-        do {
-            let urlPath = "\(Constants.baseMovieURL)/discover/movie?api_key=\(Constants.movieAPI)"
-            guard let url = URL(string: urlPath) else { throw APIError.invalidURL }
-            
-            let (data, response) = try await URLSession.shared.data(from: url)
-            guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.serverError }
-            
-            let decoder = JSONDecoder()
-            decoder.keyDecodingStrategy = .convertFromSnakeCase
-            
-            guard let decodedData = try? decoder.decode(Movies.self, from: data) else { throw APIError.inavlidData }
-            
-            return decodedData.results
-        } catch {
-            self.error = "Failed to fetch Discover Movies. \(error.localizedDescription)"
-            return []
-        }
-    }
+  
     
     //Method to fetch Video from Youtube
     func fetchYoutubeVideo(with query: String) async throws -> String {
@@ -154,7 +51,9 @@ final class APICall {
             
             return youtubeVideoID
         } catch {
-            self.error = "Failed to fetch Youtube ID. \(error.localizedDescription)"
+            await MainActor.run {
+                self.error = "Failed to fetch Youtube ID. \(error.localizedDescription)"
+            }
             return ""
         }
     }

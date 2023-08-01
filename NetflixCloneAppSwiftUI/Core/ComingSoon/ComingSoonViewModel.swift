@@ -12,12 +12,12 @@ final class ComingSoonViewModel: ObservableObject {
     @Published private(set) var comingSoonMovies = [Movie]()
     
     init() {
-       fetchDiscoverMovies()
+       fetchComingSoonMovies()
     }
     
-    private func fetchDiscoverMovies() {
+    private func fetchComingSoonMovies() {
         Task {
-            self.comingSoonMovies = try await APICall.shared.fetchDiscoverMovies()
+            self.comingSoonMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.comingSoonMovies)
         }
     }
 }
