@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class ComingSoonViewModel: ObservableObject {
+final class ComingSoonViewModel: ObservableObject {
     @Published private(set) var comingSoonMovies = [Movie]()
     
     init() {

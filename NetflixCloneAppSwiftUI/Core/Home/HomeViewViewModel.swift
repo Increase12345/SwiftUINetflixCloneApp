@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class HomeViewViewModel: ObservableObject {
+final class HomeViewViewModel: ObservableObject {
     @Published private(set) var trendingMovies = [Movie]()
     @Published private(set) var trendingTV = [Movie]()
     @Published private(set) var popularMovies = [Movie]()

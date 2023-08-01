@@ -8,7 +8,7 @@
 import Foundation
 import UserNotifications
 
-class NotificationManager {
+final class NotificationManager {
     static let shared = NotificationManager()
     
     // Asking permission of user to get notification

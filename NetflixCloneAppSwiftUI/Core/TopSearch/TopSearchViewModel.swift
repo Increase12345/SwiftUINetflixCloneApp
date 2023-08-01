@@ -8,7 +8,7 @@
 import Foundation
 
 @MainActor
-class TopSearchViewModel: ObservableObject {
+final class TopSearchViewModel: ObservableObject {
     @Published var searchText = ""
     @Published private(set) var searchedMovies = [Movie]()
     @Published private(set) var recentrySearchedMovies = [Movie]()

@@ -7,8 +7,7 @@
 
 import Foundation
 
-@MainActor
-class APICall {
+final class APICall {
     static let shared = APICall()
     
     @Published private(set) var error: String?
