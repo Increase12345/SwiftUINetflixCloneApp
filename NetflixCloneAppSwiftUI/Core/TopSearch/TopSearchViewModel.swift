@@ -47,10 +47,12 @@ final class TopSearchViewModel: ObservableObject {
     
     // Checking and Saving recently search movies to FileManager
     func addAndSaveRecentMovie(movie: Movie) {
-        if recentrySearchedMovies.count >= 3 {
+        if recentrySearchedMovies.count >= 10 {
             recentrySearchedMovies.removeLast()
         }
-        recentrySearchedMovies.insert(movie, at: 0)
-        encodeRecentSearchMovies()
+        if !recentrySearchedMovies.contains(where: { $0.originalTitle == movie.originalTitle }) {
+            recentrySearchedMovies.insert(movie, at: 0)
+            encodeRecentSearchMovies()
+        }
     }
 }

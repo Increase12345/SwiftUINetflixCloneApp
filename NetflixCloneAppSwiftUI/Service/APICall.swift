@@ -58,7 +58,6 @@ final class APICall {
         }
     }
     
-    
     //Method to fetch Video from Youtube
     func fetchYoutubeVideo(with query: String) async throws -> String {
         do {
