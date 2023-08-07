@@ -8,10 +8,17 @@
 import SwiftUI
 
 struct DetailView: View {
-    @StateObject var vm = DetailViewViewModel()
+    @StateObject var vm: DetailViewViewModel
     @FetchRequest(sortDescriptors: []) var movies: FetchedResults<MovieCore>
     @Environment(\.managedObjectContext) var moc
     let movie: Movie
+    let apiCall: APICall
+    
+    init(movie: Movie, apiCall: APICall) {
+        _vm = StateObject(wrappedValue: DetailViewViewModel(apiCall: apiCall))
+        self.movie = movie
+        self.apiCall = apiCall
+    }
     
     var body: some View {
         ScrollView {
@@ -50,7 +57,7 @@ struct DetailView: View {
             }
         }
         .onAppear {
-            //vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
+            vm.fetchYoutubeVideo(with: movie.title ?? movie.originalName ?? "")
         }
         
         // Alert in case user wants to download a movie which already downloaded
@@ -61,7 +68,8 @@ struct DetailView: View {
 }
 
 struct DetailView_Previews: PreviewProvider {
+    static let apiCall = APICall()
     static var previews: some View {
-        DetailView(movie: Movie.MOCK_DATA)
+        DetailView(movie: Movie.MOCK_DATA, apiCall: apiCall)
     }
 }

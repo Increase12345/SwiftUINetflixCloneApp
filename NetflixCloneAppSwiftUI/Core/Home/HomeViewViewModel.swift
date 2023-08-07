@@ -17,7 +17,10 @@ final class HomeViewViewModel: ObservableObject {
     
     @Published var showAlert = false
     
-    init() {
+    let apiCall: APICall
+    
+    init(apiCall: APICall) {
+        self.apiCall = apiCall
         fetchMoviesAndTv()
         NotificationManager.shared.requestAutorization()
     }
@@ -25,19 +28,19 @@ final class HomeViewViewModel: ObservableObject {
     private func fetchMoviesAndTv() {
         Task {
             // Fetching Trending Movies
-            self.trendingMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.tredingMovies)
+            self.trendingMovies = try await apiCall.fetchMoviesAndTv(urlPath: Constants.tredingMovies)
             
             // Fetching Trending Tv
-            self.trendingTV = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.trendingTv)
+            self.trendingTV = try await apiCall.fetchMoviesAndTv(urlPath: Constants.trendingTv)
             
             // Fetching Popular Movies
-            self.popularMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.popularMovies)
+            self.popularMovies = try await apiCall.fetchMoviesAndTv(urlPath: Constants.popularMovies)
             
             // Fetching Upcoming Movies
-            self.upcomingMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.upcomingMovies)
+            self.upcomingMovies = try await apiCall.fetchMoviesAndTv(urlPath: Constants.upcomingMovies)
             
             // Fetching Top Rated Movies
-            self.topRatedMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.topRatedMovies)
+            self.topRatedMovies = try await apiCall.fetchMoviesAndTv(urlPath: Constants.topRatedMovies)
         }
     }
 }

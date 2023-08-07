@@ -11,13 +11,16 @@ import Foundation
 final class ComingSoonViewModel: ObservableObject {
     @Published private(set) var comingSoonMovies = [Movie]()
     
-    init() {
+    let apiCall: APICall
+    
+    init(apiCall: APICall) {
+        self.apiCall = apiCall
        fetchComingSoonMovies()
     }
     
     private func fetchComingSoonMovies() {
         Task {
-            self.comingSoonMovies = try await APICall.shared.fetchMoviesAndTv(urlPath: Constants.comingSoonMovies)
+            self.comingSoonMovies = try await apiCall.fetchMoviesAndTv(urlPath: Constants.comingSoonMovies)
         }
     }
 }

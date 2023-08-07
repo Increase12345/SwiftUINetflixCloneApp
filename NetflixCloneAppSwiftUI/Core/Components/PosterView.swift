@@ -14,6 +14,7 @@ struct PosterView: View {
     @State var showAlert = false
     @State var showAlertMessage = ""
     let movie: Movie
+    let apiCall: APICall
     
     var body: some View {
         ZStack {
@@ -27,7 +28,7 @@ struct PosterView: View {
                 
                 HStack(spacing: 30) {
                     NavigationLink {
-                        DetailView(movie: movie)
+                        DetailView(movie: movie, apiCall: apiCall)
                     } label: {
                         Text("Play")
                             .foregroundColor(.white)
@@ -60,7 +61,8 @@ struct PosterView: View {
 }
 
 struct PosterView_Previews: PreviewProvider {
+    static let apiCall = APICall()
     static var previews: some View {
-        PosterView(movie: Movie.MOCK_DATA)
+        PosterView(movie: Movie.MOCK_DATA, apiCall: apiCall)
     }
 }

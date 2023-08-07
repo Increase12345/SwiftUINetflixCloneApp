@@ -8,11 +8,7 @@
 import Foundation
 
 final class APICall {
-    static let shared = APICall()
-    
-    @Published private(set) var error: String?
-    
-    private init() { }
+    @Published var error: Error?
     
     // Method to fetch Trending Movies
     func fetchMoviesAndTv(urlPath: String) async throws -> [Movie] {
@@ -30,7 +26,7 @@ final class APICall {
             return decodedData.results
         } catch {
             await MainActor.run {
-                self.error = "Failed to fetch Trending Movies. \(error.localizedDescription)"
+                self.error = error
             }
             return []
         }
@@ -52,7 +48,7 @@ final class APICall {
             return decodedData.results
         } catch {
             await MainActor.run {
-                self.error = "Failed to search for Movies. \(error.localizedDescription)"
+                self.error = error
             }
             return []
         }
@@ -73,7 +69,7 @@ final class APICall {
             return youtubeVideoID
         } catch {
             await MainActor.run {
-                self.error = "Failed to fetch Youtube ID. \(error.localizedDescription)"
+                self.error = error
             }
             return ""
         }

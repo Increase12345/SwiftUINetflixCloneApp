@@ -8,44 +8,49 @@
 import SwiftUI
 
 struct HomeView: View {
-    @StateObject var vm = HomeViewViewModel()
+    @StateObject var vm: HomeViewViewModel
+    
+    init(apiCall: APICall) {
+        _vm = StateObject(wrappedValue: HomeViewViewModel(apiCall: apiCall))
+    }
     
     var body: some View {
         VStack {
             HeaderView()
             ScrollView {
                 VStack {
-                    PosterView(movie: vm.upcomingMovies.last ?? Movie.MOCK_DATA)
+                    PosterView(movie: vm.upcomingMovies.last ?? Movie.MOCK_DATA, apiCall: vm.apiCall)
                     
-                    SectionsOfMovies(sectionTitle: "Trending Movies", section: vm.trendingMovies)
+                    SectionsOfMovies(sectionTitle: "Trending Movies", section: vm.trendingMovies, apiCall: vm.apiCall)
                     
-                    SectionsOfMovies(sectionTitle: "Trending TV", section: vm.trendingTV)
+                    SectionsOfMovies(sectionTitle: "Trending TV", section: vm.trendingTV, apiCall: vm.apiCall)
                     
-                    SectionsOfMovies(sectionTitle: "Popular", section: vm.popularMovies)
+                    SectionsOfMovies(sectionTitle: "Popular", section: vm.popularMovies, apiCall: vm.apiCall)
                     
-                    SectionsOfMovies(sectionTitle: "Upcoming Movies", section: vm.upcomingMovies)
+                    SectionsOfMovies(sectionTitle: "Upcoming Movies", section: vm.upcomingMovies, apiCall: vm.apiCall)
                     
-                    SectionsOfMovies(sectionTitle: "Top Rated", section: vm.topRatedMovies)
+                    SectionsOfMovies(sectionTitle: "Top Rated", section: vm.topRatedMovies, apiCall: vm.apiCall)
                 }
             }
         }
-        .onReceive(APICall.shared.$error) { error in
+        .onReceive(vm.apiCall.$error, perform: { error in
             if error != nil {
                 vm.showAlert = true
             }
-        }
-        .alert("Erorr", isPresented: $vm.showAlert) {
-            Button("Ok") { vm.showAlert = false }
+        })
+        .alert("Error", isPresented: $vm.showAlert) {
+            Button("OK") { }
         } message: {
-            Text(APICall.shared.error ?? "")
+            Text(vm.apiCall.error?.localizedDescription ?? "")
         }
     }
 }
 
 struct HomeView_Previews: PreviewProvider {
+    static let apiCall = APICall()
     static var previews: some View {
         NavigationStack {
-            HomeView()
+            HomeView(apiCall: apiCall)
         }
     }
 }

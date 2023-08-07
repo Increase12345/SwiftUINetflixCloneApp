@@ -9,7 +9,11 @@ import SwiftUI
 import Kingfisher
 
 struct TopSearchView: View {
-    @StateObject var vm = TopSearchViewModel()
+    @StateObject var vm: TopSearchViewModel
+    
+    init(apiCall: APICall) {
+        _vm = StateObject(wrappedValue: TopSearchViewModel(apiCall: apiCall))
+    }
     
     var body: some View {
         VStack {
@@ -21,7 +25,7 @@ struct TopSearchView: View {
                 if !vm.searchText.isEmpty {
                     ForEach(vm.searchedMovies, id: \.id) { movie in
                         NavigationLink {
-                            DetailView(movie: movie)
+                            DetailView(movie: movie, apiCall: vm.apiCall)
                         } label: {
                             MovieRowView(imageURL: movie.posterImage, title: movie.title ?? "")
                         }
@@ -62,9 +66,10 @@ struct TopSearchView: View {
 }
 
 struct TopSearchView_Previews: PreviewProvider {
+    static let apiCall = APICall()
     static var previews: some View {
         NavigationStack {
-            TopSearchView()
+            TopSearchView(apiCall: apiCall)
         }
     }
 }

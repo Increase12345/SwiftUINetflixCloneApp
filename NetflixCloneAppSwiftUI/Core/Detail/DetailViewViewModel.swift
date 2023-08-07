@@ -13,9 +13,15 @@ final class DetailViewViewModel: ObservableObject {
     @Published var showAlert = false
     @Published var showAlertMessage = ""
     
+    let apiCall: APICall
+    
+    init(apiCall: APICall) {
+        self.apiCall = apiCall
+    }
+    
     func fetchYoutubeVideo(with title: String) {
         Task {
-            self.youtubeVideoID = try await APICall.shared.fetchYoutubeVideo(with: title + " trailer")
+            self.youtubeVideoID = try await apiCall.fetchYoutubeVideo(with: title + " trailer")
         }
     }
 }

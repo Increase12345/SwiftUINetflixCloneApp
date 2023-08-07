@@ -11,6 +11,7 @@ import Kingfisher
 struct SectionsOfMovies: View {
     let sectionTitle: String
     var section: [Movie]
+    let apiCall: APICall
     
     var body: some View {
         VStack {
@@ -25,7 +26,7 @@ struct SectionsOfMovies: View {
                 LazyHStack(spacing: 15) {
                     ForEach(section, id: \.id) { movie in
                         NavigationLink {
-                            DetailView(movie: movie)
+                            DetailView(movie: movie, apiCall: apiCall)
                         } label: {
                             KFImage(URL(string: movie.posterImage))
                                 .resizable()
@@ -42,7 +43,8 @@ struct SectionsOfMovies: View {
 }
 
 struct SectionsOfMovies_Previews: PreviewProvider {
+    static let apiCall = APICall()
     static var previews: some View {
-        SectionsOfMovies(sectionTitle: "Trending Movies", section: [Movie]())
+        SectionsOfMovies(sectionTitle: "Trending Movies", section: [Movie](), apiCall: apiCall)
     }
 }

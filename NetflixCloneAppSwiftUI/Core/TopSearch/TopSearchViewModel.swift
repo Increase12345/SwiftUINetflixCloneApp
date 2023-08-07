@@ -13,16 +13,19 @@ final class TopSearchViewModel: ObservableObject {
     @Published private(set) var searchedMovies = [Movie]()
     @Published private(set) var recentrySearchedMovies = [Movie]()
     
+    let apiCall: APICall
+    
     // FileManager path for recent searched movies
     let savePathForRecentMovie = FileManager.documentsDirectory.appendingPathComponent("SavedMovies")
     
-    init() {
+    init(apiCall: APICall) {
+        self.apiCall = apiCall
         fetchRecentSearchMovies()
     }
     
     // Search for movies on movie API
     func searchForMovie(with query: String) async throws {
-        self.searchedMovies = try await APICall.shared.searchForMovies(with: query)
+        self.searchedMovies = try await apiCall.searchForMovies(with: query)
     }
     
     // Encoding recent search movies for FileManager
