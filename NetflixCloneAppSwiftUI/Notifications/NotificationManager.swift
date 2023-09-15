@@ -16,7 +16,7 @@ final class NotificationManager {
         let options: UNAuthorizationOptions = [.alert, .sound, .badge]
         UNUserNotificationCenter.current().requestAuthorization(options: options) { success, error in
             if let error = error {
-                //print("User declined autorization \(error)")
+                print("User declined autorization \(error)")
             } else {
                 //print("User allowed to send notifications")
             }

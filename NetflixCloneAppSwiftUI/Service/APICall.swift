@@ -7,8 +7,8 @@
 
 import Foundation
 
-final class APICall {
-    @Published var error: Error?
+actor APICall {
+    private let decoder = JSONDecoder()
     
     // Method to fetch Trending Movies
     func fetchMoviesAndTv(urlPath: String) async throws -> [Movie] {
@@ -18,17 +18,13 @@ final class APICall {
             let (data, response) = try await URLSession.shared.data(from: url)
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.serverError }
             
-            let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             guard let decodedData = try? decoder.decode(Movies.self, from: data) else { throw APIError.inavlidData }
             
             return decodedData.results
         } catch {
-            await MainActor.run {
-                self.error = error
-            }
-            return []
+            throw APIError.unknown(error)
         }
     }
     
@@ -40,17 +36,14 @@ final class APICall {
         
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
-            let decoder = JSONDecoder()
+            
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             
             let decodedData = try decoder.decode(Movies.self, from: data)
             
             return decodedData.results
         } catch {
-            await MainActor.run {
-                self.error = error
-            }
-            return []
+            throw APIError.unknown(error)
         }
     }
     
@@ -62,16 +55,13 @@ final class APICall {
             
             let (data, response) = try await URLSession.shared.data(from: url)
             guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw APIError.serverError }
-            guard let decodedData = try? JSONDecoder().decode(Youtube.self, from: data) else { throw APIError.inavlidData}
+            guard let decodedData = try? decoder.decode(Youtube.self, from: data) else { throw APIError.inavlidData}
             
             let youtubeVideoID = "\(decodedData.items[0].id.videoId)"
             
             return youtubeVideoID
         } catch {
-            await MainActor.run {
-                self.error = error
-            }
-            return ""
+            throw APIError.unknown(error)
         }
     }
 }

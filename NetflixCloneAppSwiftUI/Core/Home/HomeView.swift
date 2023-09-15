@@ -33,15 +33,10 @@ struct HomeView: View {
                 }
             }
         }
-        .onReceive(vm.apiCall.$error, perform: { error in
-            if error != nil {
-                vm.showAlert = true
-            }
-        })
         .alert("Error", isPresented: $vm.showAlert) {
-            Button("OK") { }
+            Button("OK") { vm.showAlert = false }
         } message: {
-            Text(vm.apiCall.error?.localizedDescription ?? "")
+            Text(vm.errorTitle)
         }
     }
 }
